@@ -96,7 +96,7 @@ theme: hexo-theme-yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:kuangwu111/kuangwu111.github.io.git
+  repo: git@github.com:BrokenRain/BrokenRain.github.io.git
   branch: master
 
 jsonContent:

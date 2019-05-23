@@ -7,7 +7,7 @@ menu:
 
 # SubNav
 subnav:
-  github: "https://github.com/kuangwu111"
+  github: "https://github.com/BrokenRain"
   rss: /atom.xml
   #weibo: "#"
   #zhihu: "#"
@@ -99,7 +99,7 @@ style:
 # slider的设置
 slider:
   # 是否默认展开tags板块
-  showTags: false
+  showTags: true
 
 # 智能菜单
 # 如不需要，将该项置为false
