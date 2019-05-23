@@ -1,7 +1,7 @@
 ---
 title: Windows下更改MessageBox按钮文本内容
 date: 2019-05-22
-reward: true
+reward: false
 tags:
   - Win32
 ---
