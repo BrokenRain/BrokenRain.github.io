@@ -81,6 +81,7 @@
 
 
 <% if (!index && post.comments){ %>
+
 <% if (theme.livere){ %>
 <%- partial('post/livere', {
           key: post.slug,
@@ -88,6 +89,7 @@
           url: config.url+url_for(post.path)
       }) %>
 <% } %>
+
 <% if (theme.duoshuo){ %>
 <%- partial('post/duoshuo', {
       key: post.slug,
