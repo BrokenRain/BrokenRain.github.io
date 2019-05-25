@@ -4,7 +4,8 @@
 
 # Site
 title: 那年心碎的雨的博客
-subtitle: "QQ:524440604 <br>原谅我盛装出席,手握水笔,眉头紧锁,奋笔疾书,只为帮学霸垫底."
+qq: 524440604
+subtitle: "原谅我盛装出席,手握水笔,<br>眉头紧锁,奋笔疾书,只为帮学霸垫底."
 description: 南昌航空大学12级,擅长C++、Qt
 author: 那年心碎的雨
 email: 524440604@qq.com
@@ -12,7 +13,7 @@ keywords: "C/C++,QT,C#"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://brokenrain.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -34,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:

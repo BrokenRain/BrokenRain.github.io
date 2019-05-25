@@ -9,8 +9,13 @@
 		<hgroup>
 			<h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
 		</hgroup>
+		<% if (theme.qq){ %>
+			<p style="color: blue; margin-bottom: 10px; margin-top: -15px;>
+				<a class="header-qq">QQ:<%=theme.qq%></a>
+			</p>
+		<%}%>
 		<% if (theme.subtitle){ %>
-		<p class="header-subtitle"><%=theme.subtitle%></p>
+			<p class="header-subtitle"><%-theme.subtitle%></p>
 		<%}%>
 
 		<nav class="header-menu">

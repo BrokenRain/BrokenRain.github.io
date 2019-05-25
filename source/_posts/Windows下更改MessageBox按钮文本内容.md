@@ -34,4 +34,4 @@ int MyMessageBox(HWND hwnd, TCHAR *szText, TCHAR *szCaption, UINT uType)
 MyMessageBox(MainFrameHwnd, _T("内容"), _T("标题"), MB_YESNO);
 ```
 效果图
-![](https://i.imgur.com/OnlLc6L.png)
+![](Windows下更改MessageBox按钮文本内容/效果图.png)
