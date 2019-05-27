@@ -5,21 +5,28 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://brokenrain.github.io">
   <title>MarkDown全面讲解 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录1. 快捷键2. 基本语法2.1 字体设置斜体、粗体、删除线2.2 分级标题2.3 链接2.4 分割块2.5 代码块2.6 引用2.7 列表2.8 表格3. 常用技巧3.1 换行3.2 缩进字符3.3 特殊字符3.4 字体、字号与颜色3.5 链接的高级操作1. 行内式2. 参考式链接3. 内容目录4. 锚点5. 注脚4. 高端用法4.1 Latex数学公式4.2 流程图4.3 制作一份待办事宜">
+  <meta name="description" content="1.快捷键   功能 快捷键     加粗 Ctrl+B   斜体 Ctrl+I   引用 Ctrl+Q   插入链接 Ctrl+L   插入代码 Ctrl+K   插入图片 Ctrl+G   提升标题 Ctrl+H   有序列表 Ctrl+U   横线 Ctrl+R   撤销 Ctrl+Z   重做 Ctrl+Y">
 <meta name="keywords" content="MarkDown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MarkDown全面讲解">
-<meta property="og:url" content="http://yoursite.com/2019/04/20/MarkDown全面讲解/index.html">
+<meta property="og:url" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="目录1. 快捷键2. 基本语法2.1 字体设置斜体、粗体、删除线2.2 分级标题2.3 链接2.4 分割块2.5 代码块2.6 引用2.7 列表2.8 表格3. 常用技巧3.1 换行3.2 缩进字符3.3 特殊字符3.4 字体、字号与颜色3.5 链接的高级操作1. 行内式2. 参考式链接3. 内容目录4. 锚点5. 注脚4. 高端用法4.1 Latex数学公式4.2 流程图4.3 制作一份待办事宜">
+<meta property="og:description" content="1.快捷键   功能 快捷键     加粗 Ctrl+B   斜体 Ctrl+I   引用 Ctrl+Q   插入链接 Ctrl+L   插入代码 Ctrl+K   插入图片 Ctrl+G   提升标题 Ctrl+H   有序列表 Ctrl+U   横线 Ctrl+R   撤销 Ctrl+Z   重做 Ctrl+Y">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-22T10:10:55.555Z">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/代码块.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/引用的基本使用.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/引用的嵌套使用.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/引用其他要素.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/无序列表.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/有序列表.png">
+<meta property="og:updated_time" content="2019-05-27T03:18:41.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MarkDown全面讲解">
-<meta name="twitter:description" content="目录1. 快捷键2. 基本语法2.1 字体设置斜体、粗体、删除线2.2 分级标题2.3 链接2.4 分割块2.5 代码块2.6 引用2.7 列表2.8 表格3. 常用技巧3.1 换行3.2 缩进字符3.3 特殊字符3.4 字体、字号与颜色3.5 链接的高级操作1. 行内式2. 参考式链接3. 内容目录4. 锚点5. 注脚4. 高端用法4.1 Latex数学公式4.2 流程图4.3 制作一份待办事宜">
+<meta name="twitter:description" content="1.快捷键   功能 快捷键     加粗 Ctrl+B   斜体 Ctrl+I   引用 Ctrl+Q   插入链接 Ctrl+L   插入代码 Ctrl+K   插入图片 Ctrl+G   提升标题 Ctrl+H   有序列表 Ctrl+U   横线 Ctrl+R   撤销 Ctrl+Z   重做 Ctrl+Y">
+<meta name="twitter:image" content="http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/MarkDown全面讲解/代码块.png">
   
     <link rel="alternative" href="/atom.xml" title="那年心碎的雨的博客" type="application/atom+xml">
   
@@ -39,60 +46,66 @@
 
 </head>
 </html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #4d4d4d">
+</div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href class="profilepic">
-				<img src="/assets/blogImg/cat.jpg" class="js-avatar show">
+			<img src="/assets/blogImg/cat.jpg" class="js-avatar show">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href>那年心碎的雨</a></h1>
+			<h1 class="header-author"><a href>那年心碎的雨</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">QQ:524440604</p>
+			<p style="color: blue; margin-bottom: 10px; margin-top: -15px;>
+				<a class=" header-qq">QQ:524440604
+			</p>
+		
+		
+			<p class="header-subtitle">原谅我盛装出席,手握水笔,<br>眉头紧锁,奋笔疾书,只为帮学霸垫底.</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/archives">随笔</a></li>
-	        
-				<li><a href="/tags/">标签云</a></li>
-	        
+		<li><a href="/">主页</a></li>
+		
+		<li><a href="/archives">随笔</a></li>
+		
+		<li><a href="/tags/">标签云</a></li>
+		
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
+		
+		<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+		
+		
+		
+		
+		
+		<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+		
+		
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/BrokenRain" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
+		<a class="github" target="_blank" href="https://github.com/BrokenRain" title="github"><i class="icon-github"></i></a>
+		
+		<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+		
 			</div>
 		</nav>
 	</header>		
 </div>
-
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -110,7 +123,7 @@
 			  <h1 class="header-author js-header-author">那年心碎的雨</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>QQ:524440604<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>原谅我盛装出席,手握水笔,&lt;br&gt;眉头紧锁,奋笔疾书,只为帮学霸垫底.<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -152,7 +165,8 @@
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1"
+              class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
             <article id="post-MarkDown全面讲解" class="article article-type-post " itemscope itemprop="blogPost">
@@ -182,7 +196,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="1-快捷键"><a href="#1-快捷键" class="headerlink" title="1. 快捷键"></a>1. 快捷键</h2><h2 id="2-基本语法"><a href="#2-基本语法" class="headerlink" title="2. 基本语法"></a>2. 基本语法</h2><h3 id="2-1-字体设置斜体、粗体、删除线"><a href="#2-1-字体设置斜体、粗体、删除线" class="headerlink" title="2.1 字体设置斜体、粗体、删除线"></a>2.1 字体设置斜体、粗体、删除线</h3><h3 id="2-2-分级标题"><a href="#2-2-分级标题" class="headerlink" title="2.2 分级标题"></a>2.2 分级标题</h3><h3 id="2-3-链接"><a href="#2-3-链接" class="headerlink" title="2.3 链接"></a>2.3 链接</h3><h3 id="2-4-分割块"><a href="#2-4-分割块" class="headerlink" title="2.4 分割块"></a>2.4 分割块</h3><h3 id="2-5-代码块"><a href="#2-5-代码块" class="headerlink" title="2.5 代码块"></a>2.5 代码块</h3><h3 id="2-6-引用"><a href="#2-6-引用" class="headerlink" title="2.6 引用"></a>2.6 引用</h3><h3 id="2-7-列表"><a href="#2-7-列表" class="headerlink" title="2.7 列表"></a>2.7 列表</h3><h3 id="2-8-表格"><a href="#2-8-表格" class="headerlink" title="2.8 表格"></a>2.8 表格</h3><h2 id="3-常用技巧"><a href="#3-常用技巧" class="headerlink" title="3. 常用技巧"></a>3. 常用技巧</h2><h3 id="3-1-换行"><a href="#3-1-换行" class="headerlink" title="3.1 换行"></a>3.1 换行</h3><h3 id="3-2-缩进字符"><a href="#3-2-缩进字符" class="headerlink" title="3.2 缩进字符"></a>3.2 缩进字符</h3><h3 id="3-3-特殊字符"><a href="#3-3-特殊字符" class="headerlink" title="3.3 特殊字符"></a>3.3 特殊字符</h3><h3 id="3-4-字体、字号与颜色"><a href="#3-4-字体、字号与颜色" class="headerlink" title="3.4 字体、字号与颜色"></a>3.4 字体、字号与颜色</h3><h3 id="3-5-链接的高级操作"><a href="#3-5-链接的高级操作" class="headerlink" title="3.5 链接的高级操作"></a>3.5 链接的高级操作</h3><h4 id="1-行内式"><a href="#1-行内式" class="headerlink" title="1. 行内式"></a>1. 行内式</h4><h4 id="2-参考式链接"><a href="#2-参考式链接" class="headerlink" title="2. 参考式链接"></a>2. 参考式链接</h4><h4 id="3-内容目录"><a href="#3-内容目录" class="headerlink" title="3. 内容目录"></a>3. 内容目录</h4><h4 id="4-锚点"><a href="#4-锚点" class="headerlink" title="4. 锚点"></a>4. 锚点</h4><h4 id="5-注脚"><a href="#5-注脚" class="headerlink" title="5. 注脚"></a>5. 注脚</h4><h2 id="4-高端用法"><a href="#4-高端用法" class="headerlink" title="4. 高端用法"></a>4. 高端用法</h2><h3 id="4-1-Latex数学公式"><a href="#4-1-Latex数学公式" class="headerlink" title="4.1 Latex数学公式"></a>4.1 Latex数学公式</h3><h3 id="4-2-流程图"><a href="#4-2-流程图" class="headerlink" title="4.2 流程图"></a>4.2 流程图</h3><h3 id="4-3-制作一份待办事宜——Todo列表"><a href="#4-3-制作一份待办事宜——Todo列表" class="headerlink" title="4.3 制作一份待办事宜——Todo列表"></a>4.3 制作一份待办事宜——Todo列表</h3><h3 id="4-4-绘制序列图"><a href="#4-4-绘制序列图" class="headerlink" title="4.4 绘制序列图"></a>4.4 绘制序列图</h3><h3 id="4-5-绘制甘特图"><a href="#4-5-绘制甘特图" class="headerlink" title="4.5 绘制甘特图"></a>4.5 绘制甘特图</h3><h2 id="5-Markdown工具"><a href="#5-Markdown工具" class="headerlink" title="5. Markdown工具"></a>5. Markdown工具</h2><h2 id="1-快捷键-1"><a href="#1-快捷键-1" class="headerlink" title="1.快捷键"></a>1.快捷键</h2><table>
+    <h2 id="1-快捷键"><a href="#1-快捷键" class="headerlink" title="1.快捷键"></a>1.快捷键</h2><table>
 <thead>
 <tr>
 <th style="text-align:center"><strong>功能</strong></th>
@@ -236,25 +250,57 @@
 </tr>
 </tbody>
 </table>
-<h2 id="2-基本语法-1"><a href="#2-基本语法-1" class="headerlink" title="2. 基本语法"></a>2. 基本语法</h2><h3 id="2-1-字体设置斜体、粗体、删除线-1"><a href="#2-1-字体设置斜体、粗体、删除线-1" class="headerlink" title="2.1 字体设置斜体、粗体、删除线"></a>2.1 字体设置斜体、粗体、删除线</h3><pre><code>斜体： *这里是需要斜体的文字* 或 _这里是需要斜体的文字_
+<a id="more"></a>
+<h2 id="2-基本语法"><a href="#2-基本语法" class="headerlink" title="2. 基本语法"></a>2. 基本语法</h2><h3 id="2-1-字体设置斜体、粗体、删除线"><a href="#2-1-字体设置斜体、粗体、删除线" class="headerlink" title="2.1 字体设置斜体、粗体、删除线"></a>2.1 字体设置斜体、粗体、删除线</h3><pre><code>斜体： *这里是需要斜体的文字* 或 _这里是需要斜体的文字_
 粗体： **这里是需要粗体的文字**
 倾斜加粗：***这里是需要倾斜加粗的文字***
 删除线： ~~这里是需要删除线的文字~~    
-</code></pre><h3 id="2-2-分级标题-1"><a href="#2-2-分级标题-1" class="headerlink" title="2.2 分级标题"></a>2.2 分级标题</h3><h4 id="2-2-1-写法1"><a href="#2-2-1-写法1" class="headerlink" title="2.2.1 写法1"></a>2.2.1 写法1</h4><p>一级标题：#一级标题文字#<br>二级标题：##二级标题文字##<br>三级标题：###三级标题文字###<br>四级标题：####四级标题文字####<br>五级标题：#####五级标题文字#####<br>六级标题：######六级标题文字######</p>
-<h4 id="2-2-2-写法二"><a href="#2-2-2-写法二" class="headerlink" title="2.2.2 写法二"></a>2.2.2 写法二</h4><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="2-3-链接-1"><a href="#2-3-链接-1" class="headerlink" title="2.3 链接"></a>2.3 链接</h3><h4 id="2-3-1-插入本地图片"><a href="#2-3-1-插入本地图片" class="headerlink" title="2.3.1 插入本地图片"></a>2.3.1 插入本地图片</h4><pre><code>语法规则，有两种学法：
+</code></pre><h3 id="2-2-分级标题"><a href="#2-2-分级标题" class="headerlink" title="2.2 分级标题"></a>2.2 分级标题</h3><p>1、 写法一<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">一级标题：# 一级标题文字</span><br><span class="line">二级标题：## 二级标题文字</span><br><span class="line">三级标题：### 三级标题文字</span><br><span class="line">四级标题：#### 四级标题文字</span><br><span class="line">五级标题：##### 五级标题文字</span><br><span class="line">六级标题：###### 六级标题文字</span><br></pre></td></tr></table></figure></p>
+<p>2、写法二<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一级标题文字</span><br><span class="line">========================</span><br><span class="line">二级标题文字</span><br><span class="line">------------------------</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-链接"><a href="#2-3-链接" class="headerlink" title="2.3 链接"></a>2.3 链接</h3><h4 id="2-3-1-插入本地图片"><a href="#2-3-1-插入本地图片" class="headerlink" title="2.3.1 插入本地图片"></a>2.3.1 插入本地图片</h4><pre><code>语法规则,有两种写法：
 1.![图片描述](图片路径)
 2.![图片描述](图片路径 &quot;title&quot;)
-</code></pre><p>注意：图片描述可以不写，图片路径可以是相对路径也可以是绝对路径</p>
+</code></pre><p>注意：图片描述可以不写,图片路径可以是相对路径也可以是绝对路径。</p>
 <h4 id="2-3-2-插入互联网上图片"><a href="#2-3-2-插入互联网上图片" class="headerlink" title="2.3.2 插入互联网上图片"></a>2.3.2 插入互联网上图片</h4><pre><code>![图片描述](图片网络路径)
-注意：图片描述可以不写
-</code></pre><h4 id="2-3-3-自动链接"><a href="#2-3-3-自动链接" class="headerlink" title="2.3.3 自动链接"></a>2.3.3 自动链接</h4><pre><code>Markdown支持以比较简单的自动链接形式来处理网址和电子邮件信箱，只要用&lt;&gt;包起来，Markdown就会自动把它转成链接。如&lt;www.baidu.com&gt;
-也可以直接,也是可以显示成链接形式的
-</code></pre><h3 id="2-4-分割块-1"><a href="#2-4-分割块-1" class="headerlink" title="2.4 分割块"></a>2.4 分割块</h3><h3 id="2-5-代码块-1"><a href="#2-5-代码块-1" class="headerlink" title="2.5 代码块"></a>2.5 代码块</h3><h3 id="2-6-引用-1"><a href="#2-6-引用-1" class="headerlink" title="2.6 引用"></a>2.6 引用</h3><h3 id="2-7-列表-1"><a href="#2-7-列表-1" class="headerlink" title="2.7 列表"></a>2.7 列表</h3><h3 id="2-8-表格-1"><a href="#2-8-表格-1" class="headerlink" title="2.8 表格"></a>2.8 表格</h3><h2 id="3-常用技巧-1"><a href="#3-常用技巧-1" class="headerlink" title="3. 常用技巧"></a>3. 常用技巧</h2><h3 id="3-1-换行-1"><a href="#3-1-换行-1" class="headerlink" title="3.1 换行"></a>3.1 换行</h3><h3 id="3-2-缩进字符-1"><a href="#3-2-缩进字符-1" class="headerlink" title="3.2 缩进字符"></a>3.2 缩进字符</h3><h3 id="3-3-特殊字符-1"><a href="#3-3-特殊字符-1" class="headerlink" title="3.3 特殊字符"></a>3.3 特殊字符</h3><h3 id="3-4-字体、字号与颜色-1"><a href="#3-4-字体、字号与颜色-1" class="headerlink" title="3.4 字体、字号与颜色"></a>3.4 字体、字号与颜色</h3><h3 id="3-5-链接的高级操作-1"><a href="#3-5-链接的高级操作-1" class="headerlink" title="3.5 链接的高级操作"></a>3.5 链接的高级操作</h3><h4 id="1-行内式-1"><a href="#1-行内式-1" class="headerlink" title="1. 行内式"></a>1. 行内式</h4><h4 id="2-参考式链接-1"><a href="#2-参考式链接-1" class="headerlink" title="2. 参考式链接"></a>2. 参考式链接</h4><h4 id="3-内容目录-1"><a href="#3-内容目录-1" class="headerlink" title="3. 内容目录"></a>3. 内容目录</h4><h4 id="4-锚点-1"><a href="#4-锚点-1" class="headerlink" title="4. 锚点"></a>4. 锚点</h4><h4 id="5-注脚-1"><a href="#5-注脚-1" class="headerlink" title="5. 注脚"></a>5. 注脚</h4><h2 id="4-高端用法-1"><a href="#4-高端用法-1" class="headerlink" title="4. 高端用法"></a>4. 高端用法</h2><h3 id="4-1-Latex数学公式-1"><a href="#4-1-Latex数学公式-1" class="headerlink" title="4.1 Latex数学公式"></a>4.1 Latex数学公式</h3><h3 id="4-2-流程图-1"><a href="#4-2-流程图-1" class="headerlink" title="4.2 流程图"></a>4.2 流程图</h3><h3 id="4-3-制作一份待办事宜——Todo列表-1"><a href="#4-3-制作一份待办事宜——Todo列表-1" class="headerlink" title="4.3 制作一份待办事宜——Todo列表"></a>4.3 制作一份待办事宜——Todo列表</h3><h3 id="4-4-绘制序列图-1"><a href="#4-4-绘制序列图-1" class="headerlink" title="4.4 绘制序列图"></a>4.4 绘制序列图</h3><h3 id="4-5-绘制甘特图-1"><a href="#4-5-绘制甘特图-1" class="headerlink" title="4.5 绘制甘特图"></a>4.5 绘制甘特图</h3><h2 id="5-Markdown工具-1"><a href="#5-Markdown工具-1" class="headerlink" title="5. Markdown工具"></a>5. Markdown工具</h2><h1 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h1><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
-<li>windows推荐使用<strong>MarkdownPad2</strong></li>
-<li>Mac OS X推荐使用<strong>Mou</strong>，这是一款免费且十分好用的Markdowm编辑器</li>
-<li>Web端推荐使用<strong>简书</strong></li>
-</ul>
-<hr>
+</code></pre><p>注意：图片描述可以不写。</p>
+<h4 id="2-3-3-自动链接"><a href="#2-3-3-自动链接" class="headerlink" title="2.3.3 自动链接"></a>2.3.3 自动链接</h4><pre><code>Markdown支持以比较简单的自动链接形式来处理网址和电子邮件信箱,只要用&lt;&gt;包起来,Markdown就会自动把它转成链接。如&lt;www.baidu.com&gt;
+也可以直接,也是可以显示成链接形式的。
+</code></pre><h3 id="2-4-分割块"><a href="#2-4-分割块" class="headerlink" title="2.4 分割块"></a>2.4 分割块</h3><pre><code>可以使用三个以上星号(*)、减号(-)或底线(_)来创建分隔线,星号、减号或底线之间可以加入空格。
+星号：***或* **
+减号：---或- - -
+底线：___或__ _
+</code></pre><h3 id="2-5-代码块"><a href="#2-5-代码块" class="headerlink" title="2.5 代码块"></a>2.5 代码块</h3><pre><code>对于程序员来说,插入代码的功能是必不可少的,插入代码块的方式有两种
+第一种是利用缩进(tab),第二种是用 ` 符号(一般在ESC键下方,和~是同一个键,需在英文输入法时输入)包裹代码
+
+1、代码块:缩进4个空格或1个制表符
+2、行内式:如果在行内需要引用代码,只要用反引号\`引起来就好,
+如:看一下行内`引用效果`
+3、多行代码块与语法高亮:将需要语法高亮的代码块的前后用```包裹
+4、代码块里包含HTML代码:在代码块里面,&amp;、&lt; 和 &gt; 会自动转换成HTML实体,简书代码块里不支持HTML
+</code></pre><p>示例如下:</p>
+<p><img src="MarkDown全面讲解/代码块.png" alt></p>
+<h3 id="2-6-引用"><a href="#2-6-引用" class="headerlink" title="2.6 引用"></a>2.6 引用</h3><pre><code>在被引用的文本前加上 &gt; 和一个空格,如果只输入一个 &gt; 会产生一个空白的引用
+</code></pre><p>1、基本使用如下图所示</p>
+<p><img src="MarkDown全面讲解/引用的基本使用.png" alt></p>
+<p>2、引用的嵌套使用如下图所示</p>
+<p><img src="MarkDown全面讲解/引用的嵌套使用.png" alt></p>
+<p>3、引用其他要素</p>
+<pre><code>引用区块中也可以使用其他Markdown语法,包括标题、列表、代码砌块等。
+</code></pre><p>使用如图所示:</p>
+<p><img src="MarkDown全面讲解/引用其他要素.png" alt></p>
+<h3 id="2-7-列表"><a href="#2-7-列表" class="headerlink" title="2.7 列表"></a>2.7 列表</h3><p>1、无序列表</p>
+<pre><code>使用*、+、-表示无序列表。
+</code></pre><p>注意:符号后面一定要有一个空格,起到缩进的作用。</p>
+<p><img src="MarkDown全面讲解/无序列表.png" alt></p>
+<p>2、有序列表</p>
+<pre><code>使用数字和 . 表示有序列表
+</code></pre><p>注意:.后面一定要有一个空格,起到缩进的作用</p>
+<p><img src="MarkDown全面讲解/有序列表.png" alt></p>
+<p>3、列表和其他要素混合使用</p>
+<h3 id="2-8-表格"><a href="#2-8-表格" class="headerlink" title="2.8 表格"></a>2.8 表格</h3><h2 id="3-常用技巧"><a href="#3-常用技巧" class="headerlink" title="3. 常用技巧"></a>3. 常用技巧</h2><h3 id="3-1-换行"><a href="#3-1-换行" class="headerlink" title="3.1 换行"></a>3.1 换行</h3><h3 id="3-2-缩进字符"><a href="#3-2-缩进字符" class="headerlink" title="3.2 缩进字符"></a>3.2 缩进字符</h3><h3 id="3-3-特殊字符"><a href="#3-3-特殊字符" class="headerlink" title="3.3 特殊字符"></a>3.3 特殊字符</h3><h3 id="3-4-字体、字号与颜色"><a href="#3-4-字体、字号与颜色" class="headerlink" title="3.4 字体、字号与颜色"></a>3.4 字体、字号与颜色</h3><h3 id="3-5-链接的高级操作"><a href="#3-5-链接的高级操作" class="headerlink" title="3.5 链接的高级操作"></a>3.5 链接的高级操作</h3><h4 id="1-行内式"><a href="#1-行内式" class="headerlink" title="1. 行内式"></a>1. 行内式</h4><h4 id="2-参考式链接"><a href="#2-参考式链接" class="headerlink" title="2. 参考式链接"></a>2. 参考式链接</h4><h4 id="3-内容目录"><a href="#3-内容目录" class="headerlink" title="3. 内容目录"></a>3. 内容目录</h4><h4 id="4-锚点"><a href="#4-锚点" class="headerlink" title="4. 锚点"></a>4. 锚点</h4><h4 id="5-注脚"><a href="#5-注脚" class="headerlink" title="5. 注脚"></a>5. 注脚</h4><h2 id="4-高端用法"><a href="#4-高端用法" class="headerlink" title="4. 高端用法"></a>4. 高端用法</h2><h3 id="4-1-Latex数学公式"><a href="#4-1-Latex数学公式" class="headerlink" title="4.1 Latex数学公式"></a>4.1 Latex数学公式</h3><h3 id="4-2-流程图"><a href="#4-2-流程图" class="headerlink" title="4.2 流程图"></a>4.2 流程图</h3><h3 id="4-3-制作一份待办事宜——Todo列表"><a href="#4-3-制作一份待办事宜——Todo列表" class="headerlink" title="4.3 制作一份待办事宜——Todo列表"></a>4.3 制作一份待办事宜——Todo列表</h3><h3 id="4-4-绘制序列图"><a href="#4-4-绘制序列图" class="headerlink" title="4.4 绘制序列图"></a>4.4 绘制序列图</h3><h3 id="4-5-绘制甘特图"><a href="#4-5-绘制甘特图" class="headerlink" title="4.5 绘制甘特图"></a>4.5 绘制甘特图</h3><h2 id="5-Markdown工具"><a href="#5-Markdown工具" class="headerlink" title="5. Markdown工具"></a>5. Markdown工具</h2><h1 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h1><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><pre><code>* windows推荐使用**MarkdownPad2**
+* Mac OS X推荐使用**Mou**,这是一款免费且十分好用的Markdowm编辑器
+* Web端推荐使用**简书**
+</code></pre><hr>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>区块引用<br>嵌套引用<br>三嵌套引用<br>四嵌套引用</p>
 
     
@@ -356,7 +402,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/20/MarkDown全面讲解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://brokenrain.github.io/2019/04/20/MarkDown全面讲解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -403,8 +449,8 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-快捷键"><span class="toc-number">1.1.</span> <span class="toc-text">1. 快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基本语法"><span class="toc-number">1.2.</span> <span class="toc-text">2. 基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-字体设置斜体、粗体、删除线"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 字体设置斜体、粗体、删除线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-分级标题"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 分级标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-链接"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-分割块"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 分割块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-代码块"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-引用"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-列表"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-表格"><span class="toc-number">1.2.8.</span> <span class="toc-text">2.8 表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-常用技巧"><span class="toc-number">1.3.</span> <span class="toc-text">3. 常用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-换行"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-缩进字符"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 缩进字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-特殊字符"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-字体、字号与颜色"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 字体、字号与颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-链接的高级操作"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 链接的高级操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-行内式"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">1. 行内式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-参考式链接"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">2. 参考式链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-内容目录"><span class="toc-number">1.3.5.3.</span> <span class="toc-text">3. 内容目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-锚点"><span class="toc-number">1.3.5.4.</span> <span class="toc-text">4. 锚点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-注脚"><span class="toc-number">1.3.5.5.</span> <span class="toc-text">5. 注脚</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-高端用法"><span class="toc-number">1.4.</span> <span class="toc-text">4. 高端用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Latex数学公式"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 Latex数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程图"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-制作一份待办事宜——Todo列表"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 制作一份待办事宜——Todo列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-绘制序列图"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 绘制序列图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-绘制甘特图"><span class="toc-number">1.4.5.</span> <span class="toc-text">4.5 绘制甘特图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Markdown工具"><span class="toc-number">1.5.</span> <span class="toc-text">5. Markdown工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-快捷键-1"><span class="toc-number">1.6.</span> <span class="toc-text">1.快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基本语法-1"><span class="toc-number">1.7.</span> <span class="toc-text">2. 基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-字体设置斜体、粗体、删除线-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">2.1 字体设置斜体、粗体、删除线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-分级标题-1"><span class="toc-number">1.7.2.</span> <span class="toc-text">2.2 分级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-写法1"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">2.2.1 写法1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-写法二"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">2.2.2 写法二</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-number">2.</span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-number">2.1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-链接-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.3 链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-插入本地图片"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">2.3.1 插入本地图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-插入互联网上图片"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">2.3.2 插入互联网上图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-自动链接"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">2.3.3 自动链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-分割块-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.4 分割块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-代码块-1"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.5 代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-引用-1"><span class="toc-number">2.1.4.</span> <span class="toc-text">2.6 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-列表-1"><span class="toc-number">2.1.5.</span> <span class="toc-text">2.7 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-表格-1"><span class="toc-number">2.1.6.</span> <span class="toc-text">2.8 表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-常用技巧-1"><span class="toc-number">2.2.</span> <span class="toc-text">3. 常用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-换行-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">3.1 换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-缩进字符-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">3.2 缩进字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-特殊字符-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">3.3 特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-字体、字号与颜色-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">3.4 字体、字号与颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-链接的高级操作-1"><span class="toc-number">2.2.5.</span> <span class="toc-text">3.5 链接的高级操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-行内式-1"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">1. 行内式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-参考式链接-1"><span class="toc-number">2.2.5.2.</span> <span class="toc-text">2. 参考式链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-内容目录-1"><span class="toc-number">2.2.5.3.</span> <span class="toc-text">3. 内容目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-锚点-1"><span class="toc-number">2.2.5.4.</span> <span class="toc-text">4. 锚点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-注脚-1"><span class="toc-number">2.2.5.5.</span> <span class="toc-text">5. 注脚</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-高端用法-1"><span class="toc-number">2.3.</span> <span class="toc-text">4. 高端用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Latex数学公式-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">4.1 Latex数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程图-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">4.2 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-制作一份待办事宜——Todo列表-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">4.3 制作一份待办事宜——Todo列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-绘制序列图-1"><span class="toc-number">2.3.4.</span> <span class="toc-text">4.4 绘制序列图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-绘制甘特图-1"><span class="toc-number">2.3.5.</span> <span class="toc-text">4.5 绘制甘特图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Markdown工具-1"><span class="toc-number">2.4.</span> <span class="toc-text">5. Markdown工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown使用"><span class="toc-number">3.</span> <span class="toc-text">Markdown使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑器"><span class="toc-number">3.1.</span> <span class="toc-text">编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本语法"><span class="toc-number">3.2.</span> <span class="toc-text">基本语法</span></a></li></ol></li></ol>
-                    </div>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-快捷键"><span class="toc-number">1.</span> <span class="toc-text">1.快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基本语法"><span class="toc-number">2.</span> <span class="toc-text">2. 基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-字体设置斜体、粗体、删除线"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 字体设置斜体、粗体、删除线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-分级标题"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 分级标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-链接"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-插入本地图片"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 插入本地图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-插入互联网上图片"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 插入互联网上图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-自动链接"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3 自动链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-分割块"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 分割块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-代码块"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-引用"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-列表"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-表格"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-常用技巧"><span class="toc-number">3.</span> <span class="toc-text">3. 常用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-换行"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-缩进字符"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 缩进字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-特殊字符"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-字体、字号与颜色"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 字体、字号与颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-链接的高级操作"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 链接的高级操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-行内式"><span class="toc-number">3.5.1.</span> <span class="toc-text">1. 行内式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-参考式链接"><span class="toc-number">3.5.2.</span> <span class="toc-text">2. 参考式链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-内容目录"><span class="toc-number">3.5.3.</span> <span class="toc-text">3. 内容目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-锚点"><span class="toc-number">3.5.4.</span> <span class="toc-text">4. 锚点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-注脚"><span class="toc-number">3.5.5.</span> <span class="toc-text">5. 注脚</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-高端用法"><span class="toc-number">4.</span> <span class="toc-text">4. 高端用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Latex数学公式"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Latex数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-流程图"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-制作一份待办事宜——Todo列表"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 制作一份待办事宜——Todo列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-绘制序列图"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 绘制序列图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-绘制甘特图"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 绘制甘特图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Markdown工具"><span class="toc-number">5.</span> <span class="toc-text">5. Markdown工具</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown使用"><span class="toc-number"></span> <span class="toc-text">Markdown使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑器"><span class="toc-number">1.</span> <span class="toc-text">编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本语法"><span class="toc-number">2.</span> <span class="toc-text">基本语法</span></a></li></ol>
+                    </li></div>
                 </span>
             </div>
         </div>
@@ -458,6 +504,22 @@
 	<span class="post-meta-divider" style="display:none">|</span>
 	<span id="busuanzi_container_site_uv" style="display:none">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
 	
+
+	<!-- 引用了jquery百度的 cdn 源，也可替换其他的 -->
+ 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+ 	<!-- 也可替换其他的lazyload源 -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      $(function() {  
+    	//对所有 img 标签进行懒加载        
+          $("img").lazyload({
+          //设置占位图，我这里选用了一个 loading 的加载动画
+            placeholder:"/img/loading.gif",
+            //加载效果
+              effect:"fadeIn"
+            });
+          });
+    </script>
 </footer>
     </div>
     <script>
@@ -531,6 +593,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
@@ -586,7 +660,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">那年心碎的雨 &lt;br&gt;&lt;br&gt;毕业于南昌航空大学 &lt;br&gt;目前只是一个上位机小开发一枚</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">那年心碎的雨&lt;br&gt;&lt;br&gt;毕业于南昌航空大学 &lt;br&gt;目前只是一个上位机小开发一枚</div>
   	  	
     	</section>
     
@@ -660,5 +734,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99"
+    src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
+
 </html>
