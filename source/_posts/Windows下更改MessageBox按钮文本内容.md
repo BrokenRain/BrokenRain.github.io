@@ -29,6 +29,8 @@ int MyMessageBox(HWND hwnd, TCHAR *szText, TCHAR *szCaption, UINT uType)
 	return ret;
 }
 ```
+<!--more-->
+
 ## 使用MyMessageBox
 ```bash
 MyMessageBox(MainFrameHwnd, _T("内容"), _T("标题"), MB_YESNO);
