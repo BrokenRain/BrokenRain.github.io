@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
   <title>Hexo使用markdown插入图片无法显示解决方法 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令1234&amp;lt;!--more--&amp;gt;cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-i">
+  <meta name="description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令12cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-image --save">
 <meta name="keywords" content="hexo,markdown,图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo使用markdown插入图片无法显示解决方法">
 <meta property="og:url" content="http://brokenrain.github.io/2019/05/25/Hexo使用markdown插入图片无法显示解决方法/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令1234&amp;lt;!--more--&amp;gt;cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-i">
+<meta property="og:description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令12cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-image --save">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-27T03:18:12.491Z">
+<meta property="og:updated_time" content="2019-05-27T03:20:51.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用markdown插入图片无法显示解决方法">
-<meta name="twitter:description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令1234&amp;lt;!--more--&amp;gt;cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-i">
+<meta name="twitter:description" content="hexo发布博客时,文章中引用的本地图片总是无法显示。hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。 插件安装与配置1、我们需要安装一个图片路径转换的插件,插件名字为hexo-asset-image,只需执行以下命令12cd /d 你的hexo根目录npm install https://github.com/7ym0n/hexo-asset-image --save">
   
     <link rel="alternative" href="/atom.xml" title="那年心碎的雨的博客" type="application/atom+xml">
   
@@ -190,7 +190,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>hexo发布博客时,文章中引用的本地图片总是无法显示。<br>hexo默认无法处理文章插入本地图片,需要通过扩展插件支持。</p>
-<h1 id="插件安装与配置"><a href="#插件安装与配置" class="headerlink" title="插件安装与配置"></a>插件安装与配置</h1><p>1、我们需要安装一个图片路径转换的插件,插件名字为<strong>hexo-asset-image</strong>,只需执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">cd /d 你的hexo根目录</span><br><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<h1 id="插件安装与配置"><a href="#插件安装与配置" class="headerlink" title="插件安装与配置"></a>插件安装与配置</h1><p>1、我们需要安装一个图片路径转换的插件,插件名字为<strong>hexo-asset-image</strong>,只需执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /d 你的hexo根目录</span><br><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>2、打开hexo根目录下的_config.yml文件,修改下述内容</p>
 <pre><code>post_asset_folder: true
 
@@ -463,6 +464,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -472,10 +477,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
