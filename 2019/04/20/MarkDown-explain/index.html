@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown-explain/Todo列表.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown-explain/序列图.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/04/20/MarkDown-explain/甘特图.png">
-<meta property="og:updated_time" content="2019-05-30T10:01:43.254Z">
+<meta property="og:updated_time" content="2019-05-30T10:05:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MarkDown全面讲解">
 <meta name="twitter:description" content="1.快捷键   功能 快捷键     加粗 Ctrl+B   斜体 Ctrl+I   引用 Ctrl+Q   插入链接 Ctrl+L   插入代码 Ctrl+K   插入图片 Ctrl+G   提升标题 Ctrl+H   有序列表 Ctrl+U   横线 Ctrl+R   撤销 Ctrl+Z   重做 Ctrl+Y">
@@ -311,8 +311,12 @@
 <li>列表中包含代码块时，<strong>代码块前面需要加2个tab或8个空格，否则没效果</strong><br>使用示例如下图:<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/列表中使用其他要素.png" alt="列表中使用其他要素"></li>
 </ul>
 <p>4、注意事项<br>在使用列表时只要是数字后面加上英文的点，就会无意间产生列表，比如2019.05.29 这时候想表达的是日期，有些软件把它被误认为是列表。<br>解决方式：在每个点前面加上\就可以了。如下图所示：<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/列表使用注意事项.png" alt="列表使用注意事项"></p>
-<h3 id="2-8-表格"><a href="#2-8-表格" class="headerlink" title="2.8 表格"></a>2.8 表格</h3><p>表格的基本写法很简单，只需使用 | 将内容分隔开即可<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/表格基本使用.png" alt="表格基本使用"></p>
-<p>表格对齐方式:冒号在左边表示左对齐，右边表示有对齐，两边都有表示居中。<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/表格对齐.png" alt="表格对齐"></p>
+<h3 id="2-8-表格"><a href="#2-8-表格" class="headerlink" title="2.8 表格"></a>2.8 表格</h3><ol>
+<li><p>表格的基本写法很简单，只需使用 | 将内容分隔开即可<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/表格基本使用.png" alt="表格基本使用"></p>
+</li>
+<li><p>表格对齐方式:冒号在左边表示左对齐，右边表示有对齐，两边都有表示居中。<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/表格对齐.png" alt="表格对齐"></p>
+</li>
+</ol>
 <h2 id="3-常用技巧"><a href="#3-常用技巧" class="headerlink" title="3. 常用技巧"></a>3. 常用技巧</h2><h3 id="3-1-换行"><a href="#3-1-换行" class="headerlink" title="3.1 换行"></a>3.1 换行</h3><pre><code>方法1:连续两个以上空格+回车
 方法2:使用html语言换行标签
 </code></pre><h3 id="3-2-缩进字符"><a href="#3-2-缩进字符" class="headerlink" title="3.2 缩进字符"></a>3.2 缩进字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一个汉字占两个空格大小，首行缩进有如下3种方法:</span><br><span class="line">* 缩进一个空格: `&amp;ensp;` 或 `&amp;#8194;` </span><br><span class="line">* 缩进两个空格: `&amp;emsp;` 或 `&amp;#8195;`</span><br><span class="line">* 不换行空格: `&amp;nbsp;` 或 `&amp;#160;`</span><br></pre></td></tr></table></figure>
@@ -351,7 +355,8 @@
 <h3 id="3-4-字体、字号与颜色"><a href="#3-4-字体、字号与颜色" class="headerlink" title="3.4 字体、字号与颜色"></a>3.4 字体、字号与颜色</h3><p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过类似HTML的标记语法，它可以使普通文本内容具有一定的格式。但是它本身是不支持修改字体、字号与颜色等功能的！</p>
 <p>CSDN-markdown编辑器是其衍生版本，扩展了Markdown的功能（如表格、脚注、内嵌HTML等等）！对，就是内嵌HTML，接下来要讲的功能就需要使用内嵌HTML的方法来实现。</p>
 <p>字体，字号和颜色编辑如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;</span><br><span class="line">&lt;font face=&quot;微软雅黑&quot;&gt;微软雅黑&lt;/font&gt;</span><br><span class="line">&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;</span><br><span class="line">&lt;font color=#0099ff size=7 face=&quot;黑体&quot;&gt;color=#0099ff size=7 face=&quot;黑体&quot;&lt;/font&gt;</span><br><span class="line">&lt;font color=#00ffff size=4 face=&quot;黑体&quot;&gt;color=#00ffff size=4 face=&quot;黑体&quot;&lt;/font&gt;</span><br><span class="line">&lt;font color=gray size=1 face=&quot;黑体&quot;&gt;color=gray size=1 face=&quot;黑体&quot;&lt;/font&gt;</span><br></pre></td></tr></table></figure></p>
-<p>效果图如下:<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/字体字号颜色.png" alt="字体字号颜色"><br>颜色名列表:<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/颜色名.png" alt="颜色名"></p>
+<p>效果图如下:<br><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/字体字号颜色.png" alt="字体字号颜色"></p>
+<p><img src="//brokenrain.github.io/2019/04/20/MarkDown-explain/颜色名.png" alt="颜色名"></p>
 <h3 id="3-5-链接的高级操作"><a href="#3-5-链接的高级操作" class="headerlink" title="3.5 链接的高级操作"></a>3.5 链接的高级操作</h3><h4 id="1-行内式"><a href="#1-行内式" class="headerlink" title="1. 行内式"></a>1. 行内式</h4><p>详情参考 2.3.3 自动链接</p>
 <h4 id="2-参考式链接"><a href="#2-参考式链接" class="headerlink" title="2. 参考式链接"></a>2. 参考式链接</h4><p>格式为[链接描述][标记]，使用示例如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这是我们常用的地址:[百度][1]</span><br><span class="line">[1]:www.baidu.com</span><br></pre></td></tr></table></figure></p>
 <p>效果:这是我们常用的地址:<a href="www.baidu.com">百度</a></p>
