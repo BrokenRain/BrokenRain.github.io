@@ -36,4 +36,4 @@ int MyMessageBox(HWND hwnd, TCHAR *szText, TCHAR *szCaption, UINT uType)
 MyMessageBox(MainFrameHwnd, _T("内容"), _T("标题"), MB_YESNO);
 ```
 效果图
-![](MarkDown-explain/效果图.png)
+![效果图](MessageBox-buttonText/效果图.png)
