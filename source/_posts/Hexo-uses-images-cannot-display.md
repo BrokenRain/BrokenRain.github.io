@@ -3,8 +3,7 @@ title: Hexo使用markdown插入图片无法显示解决方法
 date: 2019-05-25 20:17:06
 tags:
   - hexo
-  - markdown
-  - 图片
+  - Markdown
 ---
 
 hexo发布博客时，文章中引用的本地图片总是无法显示。
