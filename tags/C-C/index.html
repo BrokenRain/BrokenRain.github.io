@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
-  <title>C/C++中如何获取数组和指针的长度 | 那年心碎的雨的博客</title>
+  <title>Tag: C/C++ | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="获取数组长度 算术表达式  123456789#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int arr[15];    cout &amp;lt;&amp;lt; &amp;quot;sizeof(arr) / sizeof(*arr):&amp;quot; &amp;lt;&amp;lt; sizeof(arr) / sizeof(*arr) &amp;lt;&amp;l">
-<meta name="keywords" content="C&#x2F;C++,指针长度,数组长度">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++中如何获取数组和指针的长度">
-<meta property="og:url" content="http://brokenrain.github.io/2019/05/31/Array-Pointer-Length/index.html">
+  <meta name="description" content="南昌航空大学12级,擅长C++、Qt">
+<meta name="keywords" content="C&#x2F;C++,QT,C#">
+<meta property="og:type" content="website">
+<meta property="og:title" content="那年心碎的雨的博客">
+<meta property="og:url" content="http://brokenrain.github.io/tags/C-C/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="获取数组长度 算术表达式  123456789#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int arr[15];    cout &amp;lt;&amp;lt; &amp;quot;sizeof(arr) / sizeof(*arr):&amp;quot; &amp;lt;&amp;lt; sizeof(arr) / sizeof(*arr) &amp;lt;&amp;l">
+<meta property="og:description" content="南昌航空大学12级,擅长C++、Qt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T09:58:27.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++中如何获取数组和指针的长度">
-<meta name="twitter:description" content="获取数组长度 算术表达式  123456789#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int arr[15];    cout &amp;lt;&amp;lt; &amp;quot;sizeof(arr) / sizeof(*arr):&amp;quot; &amp;lt;&amp;lt; sizeof(arr) / sizeof(*arr) &amp;lt;&amp;l">
+<meta name="twitter:title" content="那年心碎的雨的博客">
+<meta name="twitter:description" content="南昌航空大学12级,擅长C++、Qt">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -156,19 +155,24 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Array-Pointer-Length" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class=" article-header">
-  
-  
-    <h1 class="article-title" itemprop="name">
-      C/C++中如何获取数组和指针的长度
-    </h1>
-  
-
-  
-  <a href="/2019/05/31/Array-Pointer-Length/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/05/31/Array-Pointer-Length/" class="archive-article-date">
 	
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	<span id="busuanzi_container_page_pv" style="display:none">
@@ -178,53 +182,16 @@
 	
 	<time datetime="2019-05-31T09:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
 </a>
+        </div>
+    	 
   
-  </header>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/05/31/Array-Pointer-Length/">C/C++中如何获取数组和指针的长度</a>
+    </h1>
   
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="获取数组长度"><a href="#获取数组长度" class="headerlink" title="获取数组长度"></a>获取数组长度</h1><ul>
-<li><strong>算术表达式</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int arr[15];</span><br><span class="line">    cout &lt;&lt; &quot;sizeof(arr) / sizeof(*arr):&quot; &lt;&lt; sizeof(arr) / sizeof(*arr) &lt;&lt; endl;	//输出15</span><br><span class="line">    cout &lt;&lt; &quot;sizeof(arr) / sizeof(arr[0]):&quot; &lt;&lt; sizeof(arr) / sizeof(arr[0]) &lt;&lt; endl;//输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><strong>函数模板参数自动推断</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">template&lt;class T, size_t N&gt;</span><br><span class="line">size_t getCount(T (&amp;arr)[N])</span><br><span class="line">&#123;</span><br><span class="line">    return N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int arr[15];</span><br><span class="line">    cout &lt;&lt; &quot;getCount(arr):&quot; &lt;&lt; getCount(arr) &lt;&lt; endl;//输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>标准C++模板库</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;type_traits&gt;  // 需包含此头文件</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int arr[15];</span><br><span class="line">    cout &lt;&lt; &quot;extent&lt;decltype(arr), 0&gt;::value:&quot; &lt;&lt; extent&lt;decltype(arr), 0&gt;::value &lt;&lt; endl;//输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>模板特化与自动类型推断</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">class ComputeSize;</span><br><span class="line"> </span><br><span class="line">template &lt;typename T, size_t N&gt;</span><br><span class="line">class ComputeSize&lt;T[N]&gt;</span><br><span class="line">&#123;</span><br><span class="line">public: </span><br><span class="line">    static const size_t value = N;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">    int arr[15]; </span><br><span class="line">    cout &lt;&lt; &quot;ComputeSize&lt;decltype( arr )&gt;::value:&quot; &lt;&lt; ComputeSize&lt;decltype( arr )&gt;::value &lt;&lt; endl; // 输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>Visual C++编译器预定义宏</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">    int arr[15]; </span><br><span class="line">    cout &lt;&lt; &quot;_countof(arr):&quot; &lt;&lt; _countof(arr) &lt;&lt; endl; // 输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>boost库</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;boost/range.hpp&quot;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;   </span><br><span class="line">    int arr[15];   </span><br><span class="line">    cout &lt;&lt; &quot;boost::size(arr):&quot; &lt;&lt; boost::size(arr) &lt;&lt; endl; // 输出15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="获取指针长度"><a href="#获取指针长度" class="headerlink" title="获取指针长度"></a>获取指针长度</h1><ul>
-<li><strong>windows平台</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">    int *arr = new int[15]; </span><br><span class="line">    cout &lt;&lt; &quot;_msize(arr):&quot; &lt;&lt; _msize(arr) / sizeof(*arr) &lt;&lt; endl; // 输出15</span><br><span class="line">    delete arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>linux平台</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123; </span><br><span class="line">    int *arr = new int[15]; </span><br><span class="line">    cout &lt;&lt; &quot;malloc_usable_size(arr):&quot; &lt;&lt; malloc_usable_size(arr) / sizeof(*arr) &lt;&lt; endl; // 输出15</span><br><span class="line">    delete arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>本文参考链接: <a href="https://blog.csdn.net/brucethl/article/details/79257360" target="_blank" rel="noopener">https://blog.csdn.net/brucethl/article/details/79257360</a></p>
 
-    
-
-    
-  </div>
-  <div class="article-info article-info-index">
-    
-    
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,130 +211,19 @@
 		</ul>
 	</div>
 
-    
+          
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/05/31/Array-Pointer-Length/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
   
   
-    <a href="/2019/05/25/Hexo-uses-images-cannot-display/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo使用markdown插入图片无法显示解决方法</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#获取数组长度"><span class="toc-number">1.</span> <span class="toc-text">获取数组长度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取指针长度"><span class="toc-number">2.</span> <span class="toc-text">获取指针长度</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-<div id="SOHUCS" sid="Array-Pointer-Length"></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cyufrAESa",
-        conf: "00d2c6db102a72eb2b40b2e95253c0b7"
-    });
-</script>
-
-
-
-
+    
 
 
 
@@ -414,9 +270,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
