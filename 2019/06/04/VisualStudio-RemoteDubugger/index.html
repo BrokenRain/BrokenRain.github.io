@@ -6,19 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
-  <title>Archives: 2019 | 那年心碎的雨的博客</title>
+  <title>Visual Studio 2015 远程调试 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="南昌航空大学12级,擅长C++、Qt">
-<meta name="keywords" content="C&#x2F;C++,QT,C#">
-<meta property="og:type" content="website">
-<meta property="og:title" content="那年心碎的雨的博客">
-<meta property="og:url" content="http://brokenrain.github.io/archives/2019/index.html">
+  <meta name="description" content="在自己的机器上运行正常，但是一到别人的机器上运行就异常。相信作为开发人员肯定遇到过这类问题。这时远程调试就能发挥作用了。本文主要讲解Visual Studio 2015的远程调试功能。">
+<meta name="keywords" content="Visual Studio 2015">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio 2015 远程调试">
+<meta property="og:url" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="南昌航空大学12级,擅长C++、Qt">
+<meta property="og:description" content="在自己的机器上运行正常，但是一到别人的机器上运行就异常。相信作为开发人员肯定遇到过这类问题。这时远程调试就能发挥作用了。本文主要讲解Visual Studio 2015的远程调试功能。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/远程调试器目录.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/启动远程调试器.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/无身份验证.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/附加到进程.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/附加测试程序到进程.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/远程调试设置.png">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/启动远程调试.png">
+<meta property="og:updated_time" content="2019-06-04T09:24:26.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那年心碎的雨的博客">
-<meta name="twitter:description" content="南昌航空大学12级,擅长C++、Qt">
+<meta name="twitter:title" content="Visual Studio 2015 远程调试">
+<meta name="twitter:description" content="在自己的机器上运行正常，但是一到别人的机器上运行就异常。相信作为开发人员肯定遇到过这类问题。这时远程调试就能发挥作用了。本文主要讲解Visual Studio 2015的远程调试功能。">
+<meta name="twitter:image" content="http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/远程调试器目录.png">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -155,24 +164,19 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-VisualStudio-RemoteDubugger" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/VisualStudio-RemoteDubugger/" class="archive-article-date">
+    <h1 class="article-title" itemprop="name">
+      Visual Studio 2015 远程调试
+    </h1>
+  
+
+  
+  <a href="/2019/06/04/VisualStudio-RemoteDubugger/" class="archive-article-date">
 	
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	<span id="busuanzi_container_page_pv" style="display:none">
@@ -182,16 +186,37 @@
 	
 	<time datetime="2019-06-04T08:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
 </a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/VisualStudio-RemoteDubugger/">Visual Studio 2015 远程调试</a>
-    </h1>
+  </header>
   
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在自己的机器上运行正常，但是一到别人的机器上运行就异常。相信作为开发人员肯定遇到过这类问题。这时远程调试就能发挥作用了。<br>本文主要讲解Visual Studio 2015的远程调试功能。</p>
+<a id="more"></a>
+<h1 id="异常电脑设置"><a href="#异常电脑设置" class="headerlink" title="异常电脑设置"></a>异常电脑设置</h1><p>1、从开发的电脑(以下统称<strong>电脑1</strong>)中拷贝远程调试器至有异常的电脑(以下统称<strong>电脑2</strong>)</p>
+<ul>
+<li><p>在电脑1开始菜单中找到Visual Studio 2015下的<strong>Remote Debugger Folder</strong>右键打开文件位置,如: D:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Remote Debugger<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/远程调试器目录.png" alt="远程调试器目录.png"></p>
+</li>
+<li><p>根据电脑2的系统位数拷贝相应文件夹至电脑2中，如32位系统则拷贝x86文件夹，64位系统则拷贝x64文件夹</p>
+</li>
+</ul>
+<p>2、在电脑2中启动文件夹中的<strong>msvsmon.exe</strong>，记录显示的服务器名称，在开发电脑设置中的方法二中需要用到<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/启动远程调试器.png" alt="启动远程调试器.png"></p>
+<p>3、在工具-&gt;选项中设置身份验证模式为无身份验证<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/无身份验证.png" alt="无身份验证.png"></p>
+<p>4、关闭防火墙，详细步骤参考 <a href="https://jingyan.baidu.com/article/17bd8e52083ce685ab2bb839.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/17bd8e52083ce685ab2bb839.html</a></p>
+<p>5、将程序拷贝至电脑2中</p>
+<h1 id="开发电脑设置"><a href="#开发电脑设置" class="headerlink" title="开发电脑设置"></a>开发电脑设置</h1><p>启动远程调试主要有以下两种方式</p>
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一:"></a>方法一:</h2><p>1、通过Visual Studio 2015中调试-&gt;附加到进程进行设置，设置如下图:<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/附加到进程.png" alt="附加到进程.png"></p>
+<p>2、附加测试程序到进程<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/附加测试程序到进程.png" alt="附加测试程序到进程.png"></p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h2><p>1、右键项目-&gt;属性-&gt;调试，将要<strong>启动的调试器</strong>切换至<strong>远程Windows调试器</strong><br>2、设置<strong>远程命令</strong>为测试程序在电脑2中的绝对路径(包含测试程序名称及后缀)<br>3、设置<strong>工作目录</strong>为测试程序在电脑2中所在的目录<br>4、设置<strong>远程服务器名称</strong>为msvsmon.exe中显示的服务器名称<br>5、设置<strong>连接</strong>为不带身份验证的远程访问<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/远程调试设置.png" alt="远程调试设置.png"></p>
+<p>6、启动远程调试<br><img src="//brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/启动远程调试.png" alt="启动远程调试.png"></p>
 
-        <div class="article-info info-on-right">
-          
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,248 +228,131 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/06/04/VisualStudio-RemoteDubugger/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/Qt-miscellany/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-06-04T03:51:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
+  
+    <a href="/2019/06/04/Qt-miscellany/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Qt 杂录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/Qt-miscellany/">Qt 杂录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#异常电脑设置"><span class="toc-number">1.</span> <span class="toc-text">异常电脑设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发电脑设置"><span class="toc-number">2.</span> <span class="toc-text">开发电脑设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一"><span class="toc-number">2.1.</span> <span class="toc-text">方法一:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二"><span class="toc-number">2.2.</span> <span class="toc-text">方法二:</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Array-Pointer-Length/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-31T09:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Array-Pointer-Length/">C/C++中如何获取数组和指针的长度</a>
-    </h1>
-  
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/25/Hexo-uses-images-cannot-display/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-25T12:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/25/Hexo-uses-images-cannot-display/">Hexo使用markdown插入图片无法显示解决方法</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/22/MessageBox-buttonText/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/22/MessageBox-buttonText/">Windows下更改MessageBox按钮文本内容</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Win32</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/MarkDown-explain/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/MarkDown-explain/">MarkDown全面讲解</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MarkDown</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
+<div id="SOHUCS" sid="VisualStudio-RemoteDubugger"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyufrAESa",
+        conf: "00d2c6db102a72eb2b40b2e95253c0b7"
+    });
+</script>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
 
 
           </div>
@@ -490,8 +398,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
