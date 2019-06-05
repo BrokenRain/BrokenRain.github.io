@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
-  <title>Archives: 2019 | 那年心碎的雨的博客</title>
+  <title>Qt使用PNG时提示iCCP警告的解决方法 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="南昌航空大学12级,擅长C++、Qt">
-<meta name="keywords" content="C&#x2F;C++,QT,C#">
-<meta property="og:type" content="website">
-<meta property="og:title" content="那年心碎的雨的博客">
-<meta property="og:url" content="http://brokenrain.github.io/archives/2019/index.html">
+  <meta name="description" content="使用Qt开发使用某些格式的png图片时，可能会报libpng warning: iCCP: known incorrect sRGB profile的警告，虽然并不影响程序的运行，但是看起来烦，而且影响调试信息的使用。 其实解决方法非常简单，只需要将png图片用QImage读取再保存就可以了。 这里推荐一个工具:JQTools源码地址 JQTools去除ICCP方法 选择Qt相关-&amp;gt;PNG警">
+<meta name="keywords" content="Qt,PNG,ICCP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt使用PNG时提示iCCP警告的解决方法">
+<meta property="og:url" content="http://brokenrain.github.io/2019/06/05/PNG-ICCP/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="南昌航空大学12级,擅长C++、Qt">
+<meta property="og:description" content="使用Qt开发使用某些格式的png图片时，可能会报libpng warning: iCCP: known incorrect sRGB profile的警告，虽然并不影响程序的运行，但是看起来烦，而且影响调试信息的使用。 其实解决方法非常简单，只需要将png图片用QImage读取再保存就可以了。 这里推荐一个工具:JQTools源码地址 JQTools去除ICCP方法 选择Qt相关-&amp;gt;PNG警">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-05T07:44:50.345Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那年心碎的雨的博客">
-<meta name="twitter:description" content="南昌航空大学12级,擅长C++、Qt">
+<meta name="twitter:title" content="Qt使用PNG时提示iCCP警告的解决方法">
+<meta name="twitter:description" content="使用Qt开发使用某些格式的png图片时，可能会报libpng warning: iCCP: known incorrect sRGB profile的警告，虽然并不影响程序的运行，但是看起来烦，而且影响调试信息的使用。 其实解决方法非常简单，只需要将png图片用QImage读取再保存就可以了。 这里推荐一个工具:JQTools源码地址 JQTools去除ICCP方法 选择Qt相关-&amp;gt;PNG警">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -155,24 +156,19 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-PNG-ICCP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/PNG-ICCP/" class="archive-article-date">
+    <h1 class="article-title" itemprop="name">
+      Qt使用PNG时提示iCCP警告的解决方法
+    </h1>
+  
+
+  
+  <a href="/2019/06/05/PNG-ICCP/" class="archive-article-date">
 	
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	<span id="busuanzi_container_page_pv" style="display:none">
@@ -182,16 +178,26 @@
 	
 	<time datetime="2019-06-05T07:30:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
 </a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/PNG-ICCP/">Qt使用PNG时提示iCCP警告的解决方法</a>
-    </h1>
+  </header>
   
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>使用Qt开发使用某些格式的png图片时，可能会报libpng warning: iCCP: known incorrect sRGB profile的警告，虽然并不影响程序的运行，但是看起来烦，而且影响调试信息的使用。</p>
+<p>其实解决方法非常简单，只需要将png图片用QImage读取再保存就可以了。</p>
+<p>这里推荐一个工具:<a href="https://github.com/188080501/JQTools/releases/latest" target="_blank" rel="noopener">JQTools</a><br><a href="https://github.com/188080501/JQTools" target="_blank" rel="noopener">源码地址</a></p>
+<h1 id="JQTools去除ICCP方法"><a href="#JQTools去除ICCP方法" class="headerlink" title="JQTools去除ICCP方法"></a>JQTools去除ICCP方法</h1><ul>
+<li>选择<strong>Qt相关</strong>-&gt;<strong>PNG警告消除</strong></li>
+<li>选择图片就可轻松解决警告了</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,293 +217,131 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/06/05/PNG-ICCP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/VisualStudio-RemoteDubugger/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-06-04T08:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
+  
+    <a href="/2019/06/04/VisualStudio-RemoteDubugger/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Visual Studio 2015 远程调试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/VisualStudio-RemoteDubugger/">Visual Studio 2015 远程调试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Visual Studio 2015</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JQTools去除ICCP方法"><span class="toc-number">1.</span> <span class="toc-text">JQTools去除ICCP方法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/Qt-miscellany/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-06-04T03:51:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/Qt-miscellany/">Qt 杂录</a>
-    </h1>
-  
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/Array-Pointer-Length/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-31T09:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/Array-Pointer-Length/">C/C++中如何获取数组和指针的长度</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/25/Hexo-uses-images-cannot-display/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-25T12:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/25/Hexo-uses-images-cannot-display/">Hexo使用markdown插入图片无法显示解决方法</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/22/MessageBox-buttonText/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/22/MessageBox-buttonText/">Windows下更改MessageBox按钮文本内容</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Win32</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
+<div id="SOHUCS" sid="PNG-ICCP"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cyufrAESa",
+        conf: "00d2c6db102a72eb2b40b2e95253c0b7"
+    });
+</script>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/MarkDown-explain/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-04-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/MarkDown-explain/">MarkDown全面讲解</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MarkDown</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 
           </div>
@@ -543,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
