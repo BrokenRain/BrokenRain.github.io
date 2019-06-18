@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="那年心碎的雨的博客">
 <meta property="og:description" content="UUID12#include &amp;lt;QUuid&amp;gt;QString uuid = QUuid::createUuid().toString().replace(&amp;quot;&amp;#123;&amp;quot;, &amp;quot;&amp;quot;).replace(&amp;quot;-&amp;quot;, &amp;quot;&amp;quot;).toUpper();">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T05:57:21.375Z">
+<meta property="og:image" content="http://brokenrain.github.io/2019/06/04/Qt-miscellany/connect使用有重载的信号或槽函数方法二.png">
+<meta property="og:updated_time" content="2019-06-18T10:13:36.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 杂录">
 <meta name="twitter:description" content="UUID12#include &amp;lt;QUuid&amp;gt;QString uuid = QUuid::createUuid().toString().replace(&amp;quot;&amp;#123;&amp;quot;, &amp;quot;&amp;quot;).replace(&amp;quot;-&amp;quot;, &amp;quot;&amp;quot;).toUpper();">
+<meta name="twitter:image" content="http://brokenrain.github.io/2019/06/04/Qt-miscellany/connect使用有重载的信号或槽函数方法二.png">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -187,7 +189,11 @@
 <a id="more"></a>
 <h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QCryptographicHash&gt;</span><br><span class="line">QString md5 = QCryptographicHash::hash(&quot;Biao&quot;, QCryptographicHash::Md5).toHex();</span><br></pre></td></tr></table></figure>
 <h1 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h1><p>Qt5.10后推荐使用 <strong>QRandomGenerator</strong> 生成随机数，而不再推荐qrand()：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QRandomGenerator&gt;</span><br><span class="line">QRandomGenerator::global()-&gt;generate();   //(0, MAX_INT)</span><br><span class="line">QRandomGenerator::global()-&gt;bounded(100); //(0, 100)</span><br></pre></td></tr></table></figure></p>
-
+<h1 id="connect使用有重载的信号或槽函数"><a href="#connect使用有重载的信号或槽函数" class="headerlink" title="connect使用有重载的信号或槽函数"></a>connect使用有重载的信号或槽函数</h1><h2 id="方法一-使用static-cast-lt-gt-进行强制类型转换"><a href="#方法一-使用static-cast-lt-gt-进行强制类型转换" class="headerlink" title="方法一: 使用static_cast&lt;&gt;()进行强制类型转换"></a>方法一: 使用<code>static_cast&lt;&gt;()</code>进行强制类型转换</h2><p>以QSpinBox为例:<br>QSpinBox有一个重载信号void valueChanged(int i)<code>和</code>void valueChanged(const QString &amp;text)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用connect(mySpinBox, &amp;QSpinBox::valueChanged, mySlider, &amp;QSlider::setValue)会编译报错，</span><br><span class="line">因为编译器不知道该使用哪一个valueChanged信号。</span><br></pre></td></tr></table></figure>
+<p>正确使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connect(mySpinBox, SIGNAL(valueChanged(int)), mySlider, SLOT(setValue(int));</span><br><span class="line">或</span><br><span class="line">connect(mySpinBox, static_cast&lt;void (QSpinBox::*)(int)&gt;(&amp;QSpinBox::valueChanged), mySlider, &amp;QSlider::setValue);</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p><img src="//brokenrain.github.io/2019/06/04/Qt-miscellany/connect使用有重载的信号或槽函数方法二.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用QOverload&lt;&gt;::of()或者qOverload&lt;&gt;()(需要C++14支持)</span><br><span class="line">例如：connect(mySpinBox,QOverload&lt;int&gt;::of(&amp;QSpinBox::valueChanged), mySlider,&amp;QSlider::setValue);</span><br></pre></td></tr></table></figure>
     
 
     
@@ -308,7 +314,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UUID"><span class="toc-number">1.</span> <span class="toc-text">UUID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">2.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数"><span class="toc-number">3.</span> <span class="toc-text">随机数</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UUID"><span class="toc-number">1.</span> <span class="toc-text">UUID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">2.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数"><span class="toc-number">3.</span> <span class="toc-text">随机数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#connect使用有重载的信号或槽函数"><span class="toc-number">4.</span> <span class="toc-text">connect使用有重载的信号或槽函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一-使用static-cast-lt-gt-进行强制类型转换"><span class="toc-number">4.1.</span> <span class="toc-text">方法一: 使用static_cast&lt;&gt;()进行强制类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二"><span class="toc-number">4.2.</span> <span class="toc-text">方法二</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -464,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
