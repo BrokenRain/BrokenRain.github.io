@@ -52,3 +52,8 @@ connect(mySpinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged)
 使用QOverload<>::of()或者qOverload<>()(需要C++14支持)
 例如：connect(mySpinBox,QOverload<int>::of(&QSpinBox::valueChanged), mySlider,&QSlider::setValue);
 ```
+
+# 去除QLineEdit、QTextEdit等右键菜单
+```
+setContextMenuPolicy(Qt::NoContextMenu);
+```
