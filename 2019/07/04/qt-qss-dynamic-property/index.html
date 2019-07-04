@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
   <title>QT在Qss中使用动态属性 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 正常状态 最大化">
+  <meta name="description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 !正常状态 !最大化">
 <meta name="keywords" content="Qt,Qss">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT在Qss中使用动态属性">
 <meta property="og:url" content="http://brokenrain.github.io/2019/07/04/qt-qss-dynamic-property/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 正常状态 最大化">
+<meta property="og:description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 !正常状态 !最大化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T07:21:10.583Z">
+<meta property="og:updated_time" content="2019-07-04T07:22:54.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT在Qss中使用动态属性">
-<meta name="twitter:description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 正常状态 最大化">
+<meta name="twitter:description" content="在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。 !正常状态 !最大化">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -185,7 +185,7 @@
     
     <p>在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。</p>
 <h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>接下来以窗口最大化/还原按钮为例进行示例说明。</p>
-<p><a href="qt-qss-dynamic-property/正常状态.png">正常状态</a> <a href="qt-qss-dynamic-property/最大化.png">最大化</a></p>
+<p><a href="qt-qss-dynamic-property/正常状态.png">!正常状态</a> <a href="qt-qss-dynamic-property/最大化.png">!最大化</a></p>
 <a id="more"></a>
 <h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void Widget::setMaxButtonProperty()</span><br><span class="line">&#123;</span><br><span class="line">	m_buttonMax-&gt;setProperty(&quot;maximizeProperty&quot;, this-&gt;isMaximized() ? true : false);</span><br><span class="line"></span><br><span class="line">	m_buttonMax-&gt;style()-&gt;unpolish(m_buttonMax);	//先卸载之前的样式</span><br><span class="line">	m_buttonMax-&gt;style()-&gt;polish(m_buttonMax);	//重新加载样式</span><br><span class="line">或者</span><br><span class="line">//	m_buttonMax-&gt;setStyle(QApplication::style())	</span><br><span class="line"></span><br><span class="line">	m_buttonMax-&gt;update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果之前已经设置了样式，需要重新设置时需要调用unpolish卸载之前的样式，当前你也可以直接使用<code>setStyle(QApplication::style())</code>一步到位</p>
@@ -451,14 +451,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -467,11 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,6 +476,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
               </li>
              
               <li class="article-tag-list-item">
