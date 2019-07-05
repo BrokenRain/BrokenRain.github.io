@@ -57,3 +57,38 @@ connect(mySpinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged)
 ```
 setContextMenuPolicy(Qt::NoContextMenu);
 ```
+
+# 删除布局中所有控件
+```
+void Tool::cleanLayout(QLayout *layout)
+{
+	while (0 != layout->layout()->count())
+	{
+		QWidget *widget = layout->layout()->itemAt(0)->widget();
+		layout->layout()->removeWidget(widget);
+		widget->setParent(nullptr);
+		widget->deleteLater();
+	}
+}
+```
+
+# 删除QListWidget的Item
+```
+void Tool::clearListWidget(QListWidget *listWidget)
+{
+	while (0 != listWidget->count())
+	{
+		QListWidgetItem *item = listWidget->item(0);
+		QWidget *widget = listWidget->itemWidget(item);
+		if (nullptr != widget)
+		{
+			listWidget->removeItemWidget(item);
+			widget->deleteLater();
+		}
+
+		item = listWidget->takeItem(0);
+		delete item;
+		item = nullptr;
+	}
+}
+```
