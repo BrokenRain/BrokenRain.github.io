@@ -58,6 +58,17 @@ connect(mySpinBox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged)
 setContextMenuPolicy(Qt::NoContextMenu);
 ```
 
+# 防止QSpinBox自动突出显示内容
+```
+connect(spinBox, SIGNAL(valueChanged(int)), this, SLOT(onSpinBoxValueChanged()), Qt::QueuedConnection);
+
+void Window::onSpinBoxValueChanged() // slot
+{
+    spinBox->findChild<QLineEdit*>()->deselect();
+}
+
+```
+
 # 删除布局中所有控件
 ```
 void Tool::cleanLayout(QLayout *layout)
