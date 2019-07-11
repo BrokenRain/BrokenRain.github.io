@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png">
-<meta property="og:updated_time" content="2019-07-11T09:54:27.758Z">
+<meta property="og:updated_time" content="2019-07-11T10:12:20.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="盒子模型">
 <meta name="twitter:description" content="每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示">
@@ -233,23 +233,20 @@
 <li>Content 是可见的，在背景上绘制 QLabel 的内容：文本，图片</li>
 </ul>
 <h2 id="计算-border-和-content-的矩形"><a href="#计算-border-和-content-的矩形" class="headerlink" title="计算 border 和 content 的矩形"></a>计算 border 和 content 的矩形</h2><p>Padding 和 margin 都是不可见的，用它们来控制间隔，让绘制的效果更好，只有 border 和 content 是可见的。Border 和 content 要绘制在它们自己的矩形区域内，那么这些矩形怎么计算呢？Content 的矩形一定要在 border 的矩形内吗？</p>
-<p><strong>设定</strong></p>
-<ul>
+<h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><ul>
 <li>Widget 的矩形为 widgetRect，其实就是 (0, 0, width, height)</li>
 <li>Border 的矩形为 borderRect</li>
 <li>Content 的矩形为 contentRect</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 计算 border 的矩形</span><br><span class="line">borderRect.x = marginLeft</span><br><span class="line">borderRect.y = marginTop</span><br><span class="line">borderRect.width  = widgetRect.width  - marginLeft - marginRight</span><br><span class="line">borderRect.height = widgetRect.height - marginTop  - marginBottom</span><br><span class="line"></span><br><span class="line">// 计算 content 的矩形</span><br><span class="line">contentRect.x = marginLeft + borderLeft + paddingLeft</span><br><span class="line">contentRect.y = marginTop  + borderTop  + paddingTop</span><br><span class="line">contentRect.width  = widgetRect.width -</span><br><span class="line">    marginLeft     - borderLeft   - paddingLeft -</span><br><span class="line">    paddingRight   - borderRight  - marginRight;</span><br><span class="line">contentRect.height = widgetRect.height -</span><br><span class="line">    marginTop      - borderTop    - paddingTop -</span><br><span class="line">    paddingBottom  - borderBottom - marginBottom;</span><br></pre></td></tr></table></figure>
-<p><strong>为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:</strong></p>
-<ul>
+<h3 id="为了简单起见，下面的-margin-指的是它对应的-4-个值，而且都一样大，padding-也一样"><a href="#为了简单起见，下面的-margin-指的是它对应的-4-个值，而且都一样大，padding-也一样" class="headerlink" title="为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:"></a>为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:</h3><ul>
 <li>Margin 大于 0 时，borderRect 在 widgetRect 内</li>
 <li>Margin 小于 0 时，borderRect 包含 widgetRect</li>
 <li>Padding 大于 0 时，contentRect 在 borderRect 内</li>
 <li>Padding 小于 0 时，contentRect 和 borderRect 中绘制 border 的区域相交，甚至包含 borderRect</li>
 </ul>
 <p>Qt 绘制自带的 Widget 时，先绘制 border，然后才绘制 content 的内容，所以，padding 小于 0 时，可以看到 content 绘制到了 border 上，在 Border-Image 一节里，就会使用这个特点，使得实现的效果更好。</p>
-<p><strong>需要注意的是:</strong></p>
-<ul>
+<h3 id="需要注意的是"><a href="#需要注意的是" class="headerlink" title="需要注意的是:"></a>需要注意的是:</h3><ul>
 <li>QWidget::contentsRect() 和上面的 contentRect 一样</li>
 <li>QWidget::contentsMargins() 不是 margin，而是 margin + border + padding 的和: content 离边框的距离</li>
 <li>QWidget::size() 返回的是 margin + border + padding + content 的和</li>
@@ -258,13 +255,11 @@
 <h2 id="可视化盒子模型"><a href="#可视化盒子模型" class="headerlink" title="可视化盒子模型"></a>可视化盒子模型</h2><p>下面的程序，可以直观地验证盒子模型的理论，有助于加深理解，界面虽然俗气了点，但效果却是不凡，正所谓：大俗即大雅。顶级窗口的 content margin 和 spacing 设置为 0，有 4 个 QLabel，它们只有 border 的颜色不一样，还有一个 QPushButton，按下 QPushButton 时输出左上角 flagLabel 的 size(), contentsRect() 和 contentsMargins()</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MainWidget::MainWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent), ui(new Ui::MainWidget) &#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line"></span><br><span class="line">    // 为了简化代码，使用了 C++11 才支持的 Lambda 语法的信号槽连接</span><br><span class="line">    connect(ui-&gt;dumpButton, &amp;QPushButton::clicked, [this]() &#123;</span><br><span class="line">        qDebug() &lt;&lt; &quot;Label size: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;size();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents rect: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsRect();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents margins: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsMargins();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 0px;</span><br><span class="line">    padding: 0px;</span><br><span class="line">    border-width: 30px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    background: white;</span><br><span class="line">    min-width: 140px;  /* 设置 content rect 的最小 width，不是 widget 的 width() */</span><br><span class="line">    min-height: 140px; /* 设置 content rect 的最小 heightd，不是 widget 的 height()*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#flagLabel &#123;</span><br><span class="line">    border-color: qlineargradient(</span><br><span class="line">    spread:pad, x1:0,</span><br><span class="line">    y1:0, x2:0, y2:1,</span><br><span class="line">    stop:0 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.33 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.34 rgba(255, 30, 30, 255),</span><br><span class="line">    stop:0.66 rgba(255, 0, 0, 255),</span><br><span class="line">    stop:0.67 rgba(255, 255, 0, 255),</span><br><span class="line">    stop:1 rgba(255, 255, 0, 255));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#greenLabel &#123;</span><br><span class="line">    border-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#blueLabel &#123;</span><br><span class="line">    border-color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#yellowLabel &#123;</span><br><span class="line">    border-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>初始 QSS 如上，效果为:</p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png" alt></p>
+<p>初始 QSS 如上，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(200, 200)<br>  Contents rect: QRect(30,30 140x140)<br>  Contents margins: QMargins(30, 30, 30, 30)</p>
 </blockquote>
-<p><strong>由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:</strong></p>
-<ul>
+<h3 id="由于-margin-为-0px，padding-为-0px，border-width-为-30px-所以"><a href="#由于-margin-为-0px，padding-为-0px，border-width-为-30px-所以" class="headerlink" title="由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:"></a>由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:</h3><ul>
 <li><strong>label width</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
 <li><strong>label height</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
 <li><strong>content rect 的 x</strong>: 0 + 30 + 0，为 30</li>
@@ -272,13 +267,11 @@
 <li><strong>content margin</strong>：0 + 30，为 30</li>
 </ul>
 <hr>
-<p>修改 <code>margin: 20px; padding: 0px;</code>，效果为:</p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png" alt></p>
+<p>修改 <code>margin: 20px; padding: 0px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(240, 240)<br>  Contents rect: QRect(50,50 140x140)<br>  Contents margins: QMargins(50, 50, 50, 50)</p>
 </blockquote>
-<p><strong>由于 margin 为 20px，padding 为 0px，所以</strong></p>
-<ul>
+<h3 id="由于-margin-为-20px，padding-为-0px，所以"><a href="#由于-margin-为-20px，padding-为-0px，所以" class="headerlink" title="由于 margin 为 20px，padding 为 0px，所以"></a>由于 margin 为 20px，padding 为 0px，所以</h3><ul>
 <li><strong>label width</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
 <li><strong>label height</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
 <li><strong>content rect 的 x</strong>: 20 + 30 + 0，为 50</li>
@@ -287,13 +280,11 @@
 </ul>
 <p>左上角 QLabel 的大小为红框括起来的范围，而不是可见的 border 括起来的范围，因为 margin 为 20px。</p>
 <hr>
-<p>修改 <code>margin: 0px; padding: -20px;</code>，效果为:</p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png" alt></p>
+<p>修改 <code>margin: 0px; padding: -20px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(160, 160)<br>  Contents rect: QRect(10,10 140x140)<br>  Contents margins: QMargins(10, 10, 10, 10)</p>
 </blockquote>
-<p><strong>由于 margin 为 0px，padding 为 -20px，所以:</strong></p>
-<ul>
+<h3 id="由于-margin-为-0px，padding-为-20px，所以"><a href="#由于-margin-为-0px，padding-为-20px，所以" class="headerlink" title="由于 margin 为 0px，padding 为 -20px，所以:"></a>由于 margin 为 0px，padding 为 -20px，所以:</h3><ul>
 <li><strong>label width</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
 <li><strong>label height</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
 <li><strong>content rect 的 x</strong>: 0 + 30 + -20，为 10</li>
@@ -302,13 +293,11 @@
 </ul>
 <p>contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的文本 Flag 被绘制到了 border 上面。</p>
 <hr>
-<p>修改 <code>margin: -10px; padding: -20px;</code>，效果为：</p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png" alt></p>
+<p>修改 <code>margin: -10px; padding: -20px;</code>，效果为：<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(140, 140)<br>  Contents rect: QRect(0,0 140x140)<br>  Contents margins: QMargins(0, 0, 0, 0)</p>
 </blockquote>
-<p><strong>由于 margin 为 -10px，padding 为 -20px，所以</strong></p>
-<ul>
+<h3 id="由于-margin-为-10px，padding-为-20px，所以"><a href="#由于-margin-为-10px，padding-为-20px，所以" class="headerlink" title="由于 margin 为 -10px，padding 为 -20px，所以"></a>由于 margin 为 -10px，padding 为 -20px，所以</h3><ul>
 <li><strong>label width</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
 <li><strong>label height</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
 <li><strong>content rect 的 x</strong>: -10 + 30 + -20，为 0</li>
@@ -438,7 +427,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#padding-的语法"><span class="toc-number">1.</span> <span class="toc-text">padding 的语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#padding-是什么"><span class="toc-number">2.</span> <span class="toc-text">padding 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在-Qt-Designer-里选中-QLabel"><span class="toc-number">2.1.</span> <span class="toc-text">在 Qt Designer 里选中 QLabel:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-border-和-content-的矩形"><span class="toc-number">3.</span> <span class="toc-text">计算 border 和 content 的矩形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可视化盒子模型"><span class="toc-number">4.</span> <span class="toc-text">可视化盒子模型</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#padding-的语法"><span class="toc-number">1.</span> <span class="toc-text">padding 的语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#padding-是什么"><span class="toc-number">2.</span> <span class="toc-text">padding 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在-Qt-Designer-里选中-QLabel"><span class="toc-number">2.1.</span> <span class="toc-text">在 Qt Designer 里选中 QLabel:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-border-和-content-的矩形"><span class="toc-number">3.</span> <span class="toc-text">计算 border 和 content 的矩形</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设定"><span class="toc-number">3.1.</span> <span class="toc-text">设定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为了简单起见，下面的-margin-指的是它对应的-4-个值，而且都一样大，padding-也一样"><span class="toc-number">3.2.</span> <span class="toc-text">为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要注意的是"><span class="toc-number">3.3.</span> <span class="toc-text">需要注意的是:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可视化盒子模型"><span class="toc-number">4.</span> <span class="toc-text">可视化盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#由于-margin-为-0px，padding-为-0px，border-width-为-30px-所以"><span class="toc-number">4.1.</span> <span class="toc-text">由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#由于-margin-为-20px，padding-为-0px，所以"><span class="toc-number">4.2.</span> <span class="toc-text">由于 margin 为 20px，padding 为 0px，所以</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#由于-margin-为-0px，padding-为-20px，所以"><span class="toc-number">4.3.</span> <span class="toc-text">由于 margin 为 0px，padding 为 -20px，所以:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#由于-margin-为-10px，padding-为-20px，所以"><span class="toc-number">4.4.</span> <span class="toc-text">由于 margin 为 -10px，padding 为 -20px，所以</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
