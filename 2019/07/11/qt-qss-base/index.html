@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
-  <title>qt-qss-base | 那年心碎的雨的博客</title>
+  <title>QSS 基础 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。 1234567891011121314151617181920212223242526272829QLabel &amp;#123;">
+  <meta name="description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。">
 <meta name="keywords" content="QT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="qt-qss-base">
+<meta property="og:title" content="QSS 基础">
 <meta property="og:url" content="http://brokenrain.github.io/2019/07/11/qt-qss-base/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。 1234567891011121314151617181920212223242526272829QLabel &amp;#123;">
+<meta property="og:description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-base/Preview.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-base/Gradient.png">
-<meta property="og:updated_time" content="2019-07-11T09:14:53.028Z">
+<meta property="og:updated_time" content="2019-07-11T09:44:11.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="qt-qss-base">
-<meta name="twitter:description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。 1234567891011121314151617181920212223242526272829QLabel &amp;#123;">
+<meta name="twitter:title" content="QSS 基础">
+<meta name="twitter:description" content="如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。">
 <meta name="twitter:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-base/Preview.png">
   
   
@@ -166,7 +166,7 @@
   
   
     <h1 class="article-title" itemprop="name">
-      qt-qss-base
+      QSS 基础
     </h1>
   
 
@@ -187,6 +187,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    /* 相当于 font: bold 50px &quot;Snell Roundhand&quot;; */</span><br><span class="line">    font-size: 50px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    font-family: &quot;Snell Roundhand&quot;;</span><br><span class="line"></span><br><span class="line">    /* 文本的颜色 */</span><br><span class="line">    color: white;</span><br><span class="line"></span><br><span class="line">    /* 相当于 background: lightgray url(:/resources/horizontal-add-line.png); */</span><br><span class="line"></span><br><span class="line">    background-color: lightgray;</span><br><span class="line">    background-image: url(:/resources/horizontal-add-line.png);</span><br><span class="line"></span><br><span class="line">    /* 还能使用渐变 */</span><br><span class="line">    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                      stop: 0 #FFFFFF, stop: 1 #BB000000);</span><br><span class="line"></span><br><span class="line">    /* 相当于 border: 5px solid gray; */</span><br><span class="line">    border-width: 5px;</span><br><span class="line">    border-color: gray;</span><br><span class="line">    border-style: solid;</span><br><span class="line"></span><br><span class="line">    /* 边框圆角 */</span><br><span class="line">    border-radius: 10px;</span><br><span class="line"></span><br><span class="line">    padding: 5px;</span><br><span class="line">    margin: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>下图是上面 QSS 的效果图:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-base/Preview.png" alt></p>
 <h2 id="下面具体介绍一下-QSS-的基础语法"><a href="#下面具体介绍一下-QSS-的基础语法" class="headerlink" title="下面具体介绍一下 QSS 的基础语法:"></a>下面具体介绍一下 QSS 的基础语法:</h2><ul>
@@ -265,7 +266,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">x1: 0, y1: 0，渐变的开始位置，为 border rectangle 的左上角（请参考盒子模型）</span><br><span class="line">x2: 0, y2: 1，渐变的开始位置，为 border rectangle 的左下角</span><br><span class="line">stop: 0.1 #FF0000，在 0.0 处渐变的颜色为 #FF0000</span><br><span class="line">stop: 0.6 #00FF00，在 0.6 处渐变的颜色为 #00FF00</span><br><span class="line">stop: 1.0 #0000FF，在 1.0 处渐变的颜色为 #0000FF</span><br><span class="line">*/</span><br><span class="line">background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                        stop: 0.1 #FF0000,</span><br><span class="line">                        stop: 0.6 #00FF00,</span><br><span class="line">                        stop: 1.0 #0000FF);</span><br></pre></td></tr></table></figure>
 <p>渐变效果比较复杂，可以使用 Qt Desginer 的 QSS 编辑器来帮助我们可视化的实现复杂的渐变效果，如下图:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-base/Gradient.png" alt></p>
 <ul>
-<li><p><code>Padding</code> 和 <code>margin</code> 参考<a href="https://qtdebug.com/qtbook-qss-boxmodel/" target="_blank" rel="noopener">盒子模型</a>一节</p>
+<li><p><code>Padding</code> 和 <code>margin</code> 参考<a href="https://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/">盒子模型</a>一节</p>
 </li>
 <li><p>设置图标，如 QToolButton 的图标：</p>
 </li>
@@ -302,7 +303,7 @@
 </li>
 </ul>
 <p>上面的 QSS 的虽然只是基础，但是很重要，大多数的时候都要用到它们，用来修改 QLabel，QPushButton，QFrame，QWidget 等的样式还基本够用了，不过如果要修改复杂一点的 widget 的样式，如 QSpinBox，QScrollBar 等，上面的知识是不够的，要想掌握好 QSS，还必须了解 <code>QSS 的选择器</code>，<code>盒子模型</code>，<code>Border-Image</code>，<code>Subcontrol</code> 等，这些在后面都有专门的章节介绍。</p>
-<p>原文地址：<a href="https://qtdebug.com/qtbook-qss-base/" target="_blank" rel="noopener">https://qtdebug.com/qtbook-qss-base/</a></p>
+<p>原文地址：<a href="https://qtdebug.com/qtbook-qss-base/" target="_blank" rel="noopener">https://qtdebug.com/qtbook-qss-base/</a> 博主狗哥的其他博文也写的非常好，从他这里学到了很多，需要的同学可以去看看<a href="https://qtdebug.com/qtbook/" target="_blank" rel="noopener">https://qtdebug.com/qtbook/</a></p>
 
     
 
@@ -571,23 +572,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +585,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
               </li>
              
               <li class="article-tag-list-item">
