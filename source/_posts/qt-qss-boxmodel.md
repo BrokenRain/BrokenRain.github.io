@@ -10,7 +10,6 @@ tags:
 每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示
 ![](qt-qss-boxmodel/QSS-BoxModel-0.png)
 
-
 * `content`: 绘制内容的矩形区域（如绘制文本、图片），Qt 自带的 widget 都是在 content 区里绘制内容，这只是一个约定，只要你愿意，也可以在绘制到 padding, border, margin 区
 * `padding`: 内容区和边框之间的间隔
 * `border`: 边框，可视化的显示一个 widget 的逻辑范围，而不一定是 widget 所占矩形区域的实际大小
@@ -22,19 +21,20 @@ Margin，Border，Padding 都分为 4 个部分：上、右、下、左，它们
 ![](qt-qss-boxmodel/QSS-BoxModel-1.png)
 
 ## padding 的语法
+* `padding: 2px 3px 4px 5px` 表示:
+ * padding-top 为 2px
+ * padding-right 为 3px
+ * padding-bottom 为 4px
+ * padding-left 为 5px
 
-`padding: 2px 3px 4px 5px`，表示:
-* padding-top 为 2px
-* padding-right 为 3px
-* padding-bottom 为 4px
-* padding-left 为 5px
 
-`padding: 2px 4px` 表示:
-* padding-top 和 padding-bottom 为 2px
-* padding-right 和 padding-left 为 4px
+*  `padding: 2px 4px` 表示:
+ * padding-top 和 padding-bottom 为 2px
+ * padding-right 和 padding-left 为 4px
 
-`padding: 2px` 表示:
-* padding-top、padding-right、padding-bottom、padding-left 都为 2px
+
+* `padding: 2px` 表示:
+ * padding-top、padding-right、padding-bottom、padding-left 都为 2px
 
 margin 的语法和 padding 的一样，border 除了分成 4 个部分外，还有颜色，圆角等。
 也许你也有和我一样的疑问，为什么上面表示的顺序不是从左开始，而是从上开始？对我来说，从左开始更习惯一些，但是 CSS 和 QSS 里就是这么规定的，没办法，既然不能反抗，那么就享受吧！
@@ -67,7 +67,7 @@ QLabel {
 ## 计算 border 和 content 的矩形
 Padding 和 margin 都是不可见的，用它们来控制间隔，让绘制的效果更好，只有 border 和 content 是可见的。Border 和 content 要绘制在它们自己的矩形区域内，那么这些矩形怎么计算呢？Content 的矩形一定要在 border 的矩形内吗？
 
-### 设定
+> **设定**
 * Widget 的矩形为 widgetRect，其实就是 (0, 0, width, height)
 * Border 的矩形为 borderRect
 * Content 的矩形为 contentRect
@@ -90,7 +90,7 @@ contentRect.height = widgetRect.height -
     paddingBottom  - borderBottom - marginBottom;
 ```
 
-### 为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:
+> **为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:**
 * Margin 大于 0 时，borderRect 在 widgetRect 内
 * Margin 小于 0 时，borderRect 包含 widgetRect
 * Padding 大于 0 时，contentRect 在 borderRect 内
@@ -98,7 +98,7 @@ contentRect.height = widgetRect.height -
 
 Qt 绘制自带的 Widget 时，先绘制 border，然后才绘制 content 的内容，所以，padding 小于 0 时，可以看到 content 绘制到了 border 上，在 Border-Image 一节里，就会使用这个特点，使得实现的效果更好。
 
-### 需要注意的是:
+> **需要注意的是:**
 * QWidget::contentsRect() 和上面的 contentRect 一样
 * QWidget::contentsMargins() 不是 margin，而是 margin + border + padding 的和: content 离边框的距离
 * QWidget::size() 返回的是 margin + border + padding + content 的和
@@ -120,6 +120,7 @@ MainWidget::MainWidget(QWidget *parent) :
     });
 }
 ```
+
 ```
 QLabel {
     margin: 0px;
@@ -155,6 +156,8 @@ QLabel {
     border-color: yellow;
 }
 ```
+
+
 初始 QSS 如上，效果为:
 ![](qt-qss-boxmodel/QSS-BoxModel-3.png)
 
@@ -163,7 +166,7 @@ QLabel {
   Contents rect: QRect(30,30 140x140)
   Contents margins: QMargins(30, 30, 30, 30)
 
-### 由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:
+> **由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:**
 * **label width**：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200
 * **label height**：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200
 * **content rect 的 x**: 0 + 30 + 0，为 30
@@ -179,7 +182,7 @@ QLabel {
   Contents rect: QRect(50,50 140x140)
   Contents margins: QMargins(50, 50, 50, 50)
 
-### 由于 margin 为 20px，padding 为 0px，所以
+> **由于 margin 为 20px，padding 为 0px，所以**
 * **label width**：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240
 * **label height**：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240
 * **content rect 的 x**: 20 + 30 + 0，为 50
@@ -197,8 +200,8 @@ QLabel {
   Contents rect: QRect(10,10 140x140)
   Contents margins: QMargins(10, 10, 10, 10)
 
-### 由于 margin 为 0px，padding 为 -20px，所以:
-* **label width**：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160
+> **由于 margin 为 0px，padding 为 -20px，所以:**
+*  **label width**：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160
 * **label height**：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160
 * **content rect 的 x**: 0 + 30 + -20，为 10
 * **content rect 的 y**: 0 + 30 + -20，为 10
@@ -215,7 +218,7 @@ contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的�
   Contents rect: QRect(0,0 140x140)
   Contents margins: QMargins(0, 0, 0, 0)
 
-### 由于 margin 为 -10px，padding 为 -20px，所以
+> **由于 margin 为 -10px，padding 为 -20px，所以**
 * **label width**：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140
 * **label height**：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140
 * **content rect 的 x**: -10 + 30 + -20，为 0
@@ -225,3 +228,7 @@ contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的�
 因为 margin 为 -10px，border-width 为 30px，所以上边的 border 应该从 (-10, -10) 开始绘制，有三分之一给绘制到了 QLabel 的不可见区域，所以从图中看不到，这里我们使用了一个三色的 border，能直观的看到 border 的变化。
 
 QSS 里盒子模型是很关键的，相信大家现在已经明白了，但是，古人云：纸上得来终觉浅，绝知此事要躬行，请自己尝试修改不同的 margin, border, padding, min-width, min-height 等，计算、对比输出的结果，这样才会有更深刻的体会。
+
+
+
+原文地址：https://qtdebug.com/qtbook-qss-boxmodel/ 博主狗哥的其他博文也写的非常好，从他这里学到了很多，需要的同学可以去看看https://qtdebug.com/qtbook/

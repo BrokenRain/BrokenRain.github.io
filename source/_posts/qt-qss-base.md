@@ -94,6 +94,7 @@ font: italic bold 12px arial, sans-serif;
  * background-attachment，可选的值有：
 	* scroll：背景随滚动条滚动
 	* fixed：背景不随滚动条滚动
+
 * 设置背景还可以用 `border-image`，请参考 [Border Image](https://qtdebug.com/qtbook-qss-border-image/) 一节
 * 设置边框用 `border-width`, `border-style`, `border-color`
 * 设置边框用 `border`，语法为：
@@ -104,6 +105,7 @@ border: border-width border-style border-color
 /* 例如：*/
 border: 1px solid gray;
 ```
+
 * 设置圆角边框用 `border-radius`，**但是如果给定的半径大于对应边的一半，圆角就没有效果了**，在 CSS 里没有这个问题
 * 支持渐变 gradient: `qlineargradient`、`qradialgradient`、`qconicalgradient`，渐变的坐标不是用像素表示，而是把渐变的坐标的最小值定义为 0，最大值定义为 1，这种技术又叫 `Normalization`，通俗点说就是用比例表示，开始处用 0 表示，结束处用 1 表示，不管渐变的范围是 200px 还是 500px，按比例都能计算出实际的像素坐标，这样做的好处是，不需要关心渐变的像素坐标范围的具体数值。如果不用 `Normalization` 技术，widget 的大小一变化，就需要修改 QSS 里的坐标值。
 
@@ -154,8 +156,6 @@ qproperty-icon: url(:/resources/tabset-left.png);
 	* 不过 `qproperty-xxx` 也不是万能的，在 `:hover, :pressed` 等伪类选择器中不生效
 
 上面的 QSS 的虽然只是基础，但是很重要，大多数的时候都要用到它们，用来修改 QLabel，QPushButton，QFrame，QWidget 等的样式还基本够用了，不过如果要修改复杂一点的 widget 的样式，如 QSpinBox，QScrollBar 等，上面的知识是不够的，要想掌握好 QSS，还必须了解 `QSS 的选择器`，`盒子模型`，`Border-Image`，`Subcontrol` 等，这些在后面都有专门的章节介绍。
-
-
 
 
 原文地址：https://qtdebug.com/qtbook-qss-base/ 博主狗哥的其他博文也写的非常好，从他这里学到了很多，需要的同学可以去看看https://qtdebug.com/qtbook/
