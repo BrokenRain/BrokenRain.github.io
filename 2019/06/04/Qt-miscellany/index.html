@@ -17,7 +17,7 @@
 <meta property="og:description" content="UUID12#include &amp;lt;QUuid&amp;gt;QString uuid = QUuid::createUuid().toString().replace(&amp;quot;&amp;#123;&amp;quot;, &amp;quot;&amp;quot;).replace(&amp;quot;-&amp;quot;, &amp;quot;&amp;quot;).toUpper();">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://brokenrain.github.io/2019/06/04/Qt-miscellany/connect使用有重载的信号或槽函数方法二.png">
-<meta property="og:updated_time" content="2019-07-16T08:45:23.457Z">
+<meta property="og:updated_time" content="2019-07-16T11:36:54.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt 杂录">
 <meta name="twitter:description" content="UUID12#include &amp;lt;QUuid&amp;gt;QString uuid = QUuid::createUuid().toString().replace(&amp;quot;&amp;#123;&amp;quot;, &amp;quot;&amp;quot;).replace(&amp;quot;-&amp;quot;, &amp;quot;&amp;quot;).toUpper();">
@@ -198,6 +198,7 @@
 <h1 id="防止QSpinBox自动突出显示内容"><a href="#防止QSpinBox自动突出显示内容" class="headerlink" title="防止QSpinBox自动突出显示内容"></a>防止QSpinBox自动突出显示内容</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connect(spinBox, SIGNAL(valueChanged(int)), this, SLOT(onSpinBoxValueChanged()), Qt::QueuedConnection);</span><br><span class="line"></span><br><span class="line">void Window::onSpinBoxValueChanged() // slot</span><br><span class="line">&#123;</span><br><span class="line">    spinBox-&gt;findChild&lt;QLineEdit*&gt;()-&gt;deselect();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="删除布局中所有控件"><a href="#删除布局中所有控件" class="headerlink" title="删除布局中所有控件"></a>删除布局中所有控件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void Tool::cleanLayout(QLayout *layout)</span><br><span class="line">&#123;</span><br><span class="line">	while (0 != layout-&gt;layout()-&gt;count())</span><br><span class="line">	&#123;</span><br><span class="line">		QWidget *widget = layout-&gt;layout()-&gt;itemAt(0)-&gt;widget();</span><br><span class="line">		layout-&gt;layout()-&gt;removeWidget(widget);</span><br><span class="line">		widget-&gt;setParent(nullptr);</span><br><span class="line">		widget-&gt;deleteLater();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="删除QListWidget的Item"><a href="#删除QListWidget的Item" class="headerlink" title="删除QListWidget的Item"></a>删除QListWidget的Item</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void Tool::clearListWidget(QListWidget *listWidget)</span><br><span class="line">&#123;</span><br><span class="line">	while (0 != listWidget-&gt;count())</span><br><span class="line">	&#123;</span><br><span class="line">		QListWidgetItem *item = listWidget-&gt;item(0);</span><br><span class="line">		QWidget *widget = listWidget-&gt;itemWidget(item);</span><br><span class="line">		if (nullptr != widget)</span><br><span class="line">		&#123;</span><br><span class="line">			listWidget-&gt;removeItemWidget(item);</span><br><span class="line">			widget-&gt;deleteLater();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		item = listWidget-&gt;takeItem(0);</span><br><span class="line">		delete item;</span><br><span class="line">		item = nullptr;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="QMenu设置圆角"><a href="#QMenu设置圆角" class="headerlink" title="QMenu设置圆角"></a>QMenu设置圆角</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QMenu *menu = new QMenu(this);</span><br><span class="line">menu-&gt;setWindowFlag(Qt::FramelessWindowHint);		//重要</span><br><span class="line">menu-&gt;setAttribute(Qt::WA_TranslucentBackground);	//重要</span><br><span class="line"></span><br><span class="line">menu-&gt;setStyleSheet(QString(&quot;QMenu &#123; border-radius: 4px; &#125;&quot;));</span><br></pre></td></tr></table></figure>
     
 
     
@@ -318,7 +319,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UUID"><span class="toc-number">1.</span> <span class="toc-text">UUID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">2.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数"><span class="toc-number">3.</span> <span class="toc-text">随机数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#connect使用有重载的信号或槽函数"><span class="toc-number">4.</span> <span class="toc-text">connect使用有重载的信号或槽函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一-使用static-cast-lt-gt-进行强制类型转换"><span class="toc-number">4.1.</span> <span class="toc-text">方法一: 使用static_cast&lt;&gt;()进行强制类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二"><span class="toc-number">4.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去除QLineEdit、QTextEdit等右键菜单"><span class="toc-number">5.</span> <span class="toc-text">去除QLineEdit、QTextEdit等右键菜单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#防止QSpinBox自动突出显示内容"><span class="toc-number">6.</span> <span class="toc-text">防止QSpinBox自动突出显示内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除布局中所有控件"><span class="toc-number">7.</span> <span class="toc-text">删除布局中所有控件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除QListWidget的Item"><span class="toc-number">8.</span> <span class="toc-text">删除QListWidget的Item</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UUID"><span class="toc-number">1.</span> <span class="toc-text">UUID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">2.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机数"><span class="toc-number">3.</span> <span class="toc-text">随机数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#connect使用有重载的信号或槽函数"><span class="toc-number">4.</span> <span class="toc-text">connect使用有重载的信号或槽函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法一-使用static-cast-lt-gt-进行强制类型转换"><span class="toc-number">4.1.</span> <span class="toc-text">方法一: 使用static_cast&lt;&gt;()进行强制类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法二"><span class="toc-number">4.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去除QLineEdit、QTextEdit等右键菜单"><span class="toc-number">5.</span> <span class="toc-text">去除QLineEdit、QTextEdit等右键菜单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#防止QSpinBox自动突出显示内容"><span class="toc-number">6.</span> <span class="toc-text">防止QSpinBox自动突出显示内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除布局中所有控件"><span class="toc-number">7.</span> <span class="toc-text">删除布局中所有控件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除QListWidget的Item"><span class="toc-number">8.</span> <span class="toc-text">删除QListWidget的Item</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#QMenu设置圆角"><span class="toc-number">9.</span> <span class="toc-text">QMenu设置圆角</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -462,10 +463,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -474,7 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,6 +484,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
