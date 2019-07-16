@@ -8,22 +8,23 @@
   <link rel="dns-prefetch" href="http://brokenrain.github.io">
   <title>QSS 选择器 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。 QSS 的选择器有  通用选择器 * 类型选择器 类选择器 ID 选择器 属性选择器 包含选择器 子元素选择器 伪类选择器 Subcontrol 选择器  很多时候，可以使用不同的选择器实现相同效果的样式，使用非常灵活。 通用选择器 ** 作为选择器，作用于所有的 widget。 类型选择">
+  <meta name="description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。">
 <meta name="keywords" content="QT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QSS 选择器">
 <meta property="og:url" content="http://brokenrain.github.io/2019/07/11/qss-selector/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。 QSS 的选择器有  通用选择器 * 类型选择器 类选择器 ID 选择器 属性选择器 包含选择器 子元素选择器 伪类选择器 Subcontrol 选择器  很多时候，可以使用不同的选择器实现相同效果的样式，使用非常灵活。 通用选择器 ** 作为选择器，作用于所有的 widget。 类型选择">
+<meta property="og:description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Type-Selector.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Class-Selector.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Descendant-Selector.png">
 <meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Child-Selector.png">
-<meta property="og:updated_time" content="2019-07-11T12:10:37.022Z">
+<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Subcontrol-Selector.png">
+<meta property="og:updated_time" content="2019-07-16T07:46:46.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QSS 选择器">
-<meta name="twitter:description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。 QSS 的选择器有  通用选择器 * 类型选择器 类选择器 ID 选择器 属性选择器 包含选择器 子元素选择器 伪类选择器 Subcontrol 选择器  很多时候，可以使用不同的选择器实现相同效果的样式，使用非常灵活。 通用选择器 ** 作为选择器，作用于所有的 widget。 类型选择">
+<meta name="twitter:description" content="选择器决定了 style sheet 作用于哪些 widget，QSS 支持 CSS2 定义的所有选择器。">
 <meta name="twitter:image" content="http://brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Type-Selector.png">
   
   
@@ -188,8 +189,8 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <a id="more"></a>
-<p>选择器决定了 style sheet 作用于哪些 widget，QSS 支持 <a href="https://www.w3.org/TR/CSS2/selector.html#q1" target="_blank" rel="noopener">CSS2 定义的所有选择器</a>。</p>
+    <p>选择器决定了 style sheet 作用于哪些 widget，QSS 支持 <a href="https://www.w3.org/TR/CSS2/selector.html#q1" target="_blank" rel="noopener">CSS2 定义的所有选择器</a>。</p>
+<a id="more"></a>
 <p><strong>QSS 的选择器有</strong></p>
 <ul>
 <li>通用选择器 *</li>
@@ -302,12 +303,70 @@
 </table>
 <p>伪类的说明写成中文怎么感觉都很别扭，惭愧，表达能力欠佳，在此仅作为抛砖引玉吧，更多更详细的内容请参考 Qt 的帮助文档，搜索 Qt Style Sheets Reference，查看最下面的 List of Pseudo-States。</p>
 <p>当然，这些伪类并不是对任何 widget 都起作用，例如 QLabel 没有 :checked 状态，即使设置了样式 QLabel:checked {color: red}，对 QLabel 也是没有效果的，只有 widget 支持某个状态，那么对应的伪类的样式才有作用。</p>
-<p>Subcontrol 选择器<br>选择器::subcontrol 作为选择 Subcontrol 的选择器。</p>
-<p>有些 widget 是由多个部分组合成的，例如 QCheckBox 由 icon(indicator) 和 text 组成，可以使用 选择器::subcontrol 来设置 subcontrol 的样式：</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>QCheckBox::indicator {<br>    width: 20px;<br>    height: 20px;<br>}</p>
-<p>QCheckBox {<br>    spacing: 8px;<br>}</p>
-<p>常用的 Subcontrol 有:</p>
-<p>Subcontrol    说明<br>::indicator    A QCheckBox, QRadioButton, checkable QMenu item,<br>or a checkable QGroupBox’s indicator<br>::menu-indicator    A QPushButton’s menu indicator<br>::item    A QMenu, QMenuBar, or QStatusBar’s item<br>::up-button    A QSpinBox or QScrollBar’s up button<br>::down-button    A QSpinBox or QScrollBar’s down button<br>::up-arrow    A QSpinBox, QScrollBar, or QHeaderView’s up arrow<br>::down-arrow    A QSpinBox, QScrollBar, or QHeaderView’s down arrow<br>::drop-down    A QComboBox’s drop-down arrow<br>::title    A QGroupBox or QDockWidget’s title<br>::groove    A QSlider’s groove<br>::chunk    A QProgressBar’s progress chunk<br>::branch    A QTreeView’s branch indicator<br>Subcontrol 选择器的应用比较复杂，所以专门开辟了 QSS Subcontrol 一章来介绍。</p>
+<h1 id="Subcontrol-选择器"><a href="#Subcontrol-选择器" class="headerlink" title="Subcontrol 选择器"></a>Subcontrol 选择器</h1><p><code>选择器::subcontro</code>l 作为选择 Subcontrol 的选择器。</p>
+<p>有些 widget 是由多个部分组合成的，例如 QCheckBox 由 icon(indicator) 和 text 组成，可以使用 选择器::subcontrol 来设置 subcontrol 的样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox::indicator &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QCheckBox &#123;</span><br><span class="line">    spacing: 8px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Subcontrol-Selector.png" alt></p>
+<p><strong>常用的 Subcontrol 有:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Subcontrol</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">::indicator</td>
+<td style="text-align:left">A QCheckBox, QRadioButton, checkable QMenu item, or a checkable QGroupBox’s indicator</td>
+</tr>
+<tr>
+<td style="text-align:left">::menu-indicator</td>
+<td style="text-align:left">A QPushButton’s menu indicator</td>
+</tr>
+<tr>
+<td style="text-align:left">::item</td>
+<td style="text-align:left">A QMenu, QMenuBar, or QStatusBar’s item</td>
+</tr>
+<tr>
+<td style="text-align:left">::up-button</td>
+<td style="text-align:left">A QSpinBox or QScrollBar’s up button</td>
+</tr>
+<tr>
+<td style="text-align:left">::down-button</td>
+<td style="text-align:left">A QSpinBox or QScrollBar’s down button</td>
+</tr>
+<tr>
+<td style="text-align:left">::up-arrow</td>
+<td style="text-align:left">A QSpinBox, QScrollBar, or QHeaderView’s up arrow</td>
+</tr>
+<tr>
+<td style="text-align:left">::down-arrow</td>
+<td style="text-align:left">A QSpinBox, QScrollBar, or QHeaderView’s down arrow</td>
+</tr>
+<tr>
+<td style="text-align:left">::drop-down</td>
+<td style="text-align:left">A QComboBox’s drop-down arrow</td>
+</tr>
+<tr>
+<td style="text-align:left">::title</td>
+<td style="text-align:left">A QGroupBox or QDockWidget’s title</td>
+</tr>
+<tr>
+<td style="text-align:left">::groove</td>
+<td style="text-align:left">A QSlider’s groove</td>
+</tr>
+<tr>
+<td style="text-align:left">::chunk</td>
+<td style="text-align:left">A QProgressBar’s progress chunk</td>
+</tr>
+<tr>
+<td style="text-align:left">::branch</td>
+<td style="text-align:left">A QTreeView’s branch indicator</td>
+</tr>
+</tbody>
+</table>
+<p>Subcontrol 选择器的应用比较复杂，所以专门开辟了 <a href="https://qtdebug.com/qtbook-qss-subcontrol/" target="_blank" rel="noopener">QSS Subcontrol</a> 一章来介绍。</p>
+<p>原文地址：<a href="https://qtdebug.com/qtbook-qss-selector/" target="_blank" rel="noopener">https://qtdebug.com/qtbook-qss-selector/</a> 博主狗哥的其他博文也写的非常好，从他这里学到了很多，需要的同学可以去看看<a href="https://qtdebug.com/qtbook/" target="_blank" rel="noopener">https://qtdebug.com/qtbook/</a></p>
 
     
 
@@ -420,7 +479,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通用选择器"><span class="toc-number">1.</span> <span class="toc-text">通用选择器 *</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类型选择器"><span class="toc-number">2.</span> <span class="toc-text">类型选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类选择器"><span class="toc-number">3.</span> <span class="toc-text">类选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ID-选择器"><span class="toc-number">4.</span> <span class="toc-text">ID 选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#属性选择器"><span class="toc-number">5.</span> <span class="toc-text">属性选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#包含选择器"><span class="toc-number">6.</span> <span class="toc-text">包含选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子元素选择器"><span class="toc-number">7.</span> <span class="toc-text">子元素选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#伪类选择器"><span class="toc-number">8.</span> <span class="toc-text">伪类选择器</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通用选择器"><span class="toc-number">1.</span> <span class="toc-text">通用选择器 *</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类型选择器"><span class="toc-number">2.</span> <span class="toc-text">类型选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类选择器"><span class="toc-number">3.</span> <span class="toc-text">类选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ID-选择器"><span class="toc-number">4.</span> <span class="toc-text">ID 选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#属性选择器"><span class="toc-number">5.</span> <span class="toc-text">属性选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#包含选择器"><span class="toc-number">6.</span> <span class="toc-text">包含选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子元素选择器"><span class="toc-number">7.</span> <span class="toc-text">子元素选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#伪类选择器"><span class="toc-number">8.</span> <span class="toc-text">伪类选择器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Subcontrol-选择器"><span class="toc-number">9.</span> <span class="toc-text">Subcontrol 选择器</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -576,11 +635,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">

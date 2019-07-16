@@ -184,127 +184,8 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <a id="more"></a>
-<p>选择器决定了 style sheet 作用于哪些 widget，QSS 支持 <a href="https://www.w3.org/TR/CSS2/selector.html#q1" target="_blank" rel="noopener">CSS2 定义的所有选择器</a>。</p>
-<p><strong>QSS 的选择器有</strong></p>
-<ul>
-<li>通用选择器 *</li>
-<li>类型选择器</li>
-<li>类选择器</li>
-<li>ID 选择器</li>
-<li>属性选择器</li>
-<li>包含选择器</li>
-<li>子元素选择器</li>
-<li>伪类选择器</li>
-<li>Subcontrol 选择器</li>
-</ul>
-<p>很多时候，可以使用不同的选择器实现相同效果的样式，使用非常灵活。</p>
-<h1 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器 *"></a>通用选择器 *</h1><p><code>*</code> 作为选择器，作用于所有的 widget。</p>
-<h1 id="类型选择器"><a href="#类型选择器" class="headerlink" title="类型选择器"></a>类型选择器</h1><p><code>类名</code> 作为选择器，作用于它自己和它的所有子类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">   background: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用了类型选择器 <code>QFrame</code>，所以 QFrame 和它的子类 QLable，QLCDNumber，QTableWidget 等的背景会是灰色的，QPushButton 不是 QFrame 的子类，所以不受影响：<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Type-Selector.png" alt></p>
-<h1 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h1><p><code>. + 类名</code> 或者 <code>. + class</code> 的属性值 作为选择器（使用 setProperty(“class”, “QSSClassName”) 设置），只会作用于它自己，它的子类不受影响，注意和类型选择器的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line">#include &lt;QHBoxLayout&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line"></span><br><span class="line">    app.setStyleSheet(&quot;QWidget &#123; background: gray; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">    QWidget *window = new QWidget();</span><br><span class="line">    QPushButton *openButton  = new QPushButton(&quot;打开&quot;, window);</span><br><span class="line">    QPushButton *closeButton = new QPushButton(&quot;关闭&quot;, window);</span><br><span class="line">    QPushButton *saveButton  = new QPushButton(&quot;保存&quot;, window);</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout = new QHBoxLayout(window);</span><br><span class="line">    layout-&gt;addWidget(openButton);</span><br><span class="line">    layout-&gt;addWidget(closeButton);</span><br><span class="line">    layout-&gt;addWidget(saveButton);</span><br><span class="line">    window-&gt;setLayout(layout);</span><br><span class="line">    window-&gt;show();</span><br><span class="line"></span><br><span class="line">    return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>window, openButton, closeButton 和 saveButton 的背景都变成灰色的了，如果只想要 window 的背景是灰色的，按钮的背景不变，可以使用类选择器 <code>.QWidget</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* 把 QWidget 改成 .QWidget */</span><br><span class="line">app.setStyleSheet(&quot;.QWidget &#123;background: gray;&#125;&quot;)</span><br></pre></td></tr></table></figure></p>
-<p>如果 openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，则可以使用 <code>. ＋ class 的属性值</code> 作为类选择器来设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;.RedButton &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">// .RedButton 将作为类选择器</span><br><span class="line">openButton-&gt;setProperty(&quot;class&quot;,  &quot;RedButton&quot;);</span><br><span class="line">closeButton-&gt;setProperty(&quot;class&quot;, &quot;RedButton&quot;);</span><br></pre></td></tr></table></figure></p>
-<p><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Class-Selector.png" alt></p>
-<h1 id="ID-选择器"><a href="#ID-选择器" class="headerlink" title="ID 选择器"></a>ID 选择器</h1><p><code># + objectName</code> 作为选择器，只作用于用此 objectName 的对象（多个对象可以使用同一个 objectName，但是不推荐这么做，既然是 ID，那么语义上就表示唯一了）。如上面的程序， openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，也可以使用 <code>ID 选择器</code> 来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// #openButton 和 #closeButton 作为 ID 选择器</span><br><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;#openButton, #closeButton &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">openButton-&gt;setObjectName(&quot;openButton&quot;);</span><br><span class="line">closeButton-&gt;setObjectName(&quot;closeButton&quot;);</span><br></pre></td></tr></table></figure></p>
-<h1 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h1><p><code>选择器[属性=&quot;值&quot;]</code> 作为选择器，这个属性可用通过 <code>object-&gt;property(propertyName)</code> 访问的，Qt 里称为 <code>Dynamic Properties</code>。</p>
-<p>如上面的程序， openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，也可以使用属性选择器来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;QPushButton[level=&apos;dangerous&apos;] &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">openButton-&gt;setProperty(&quot;level&quot;,  &quot;dangerous&quot;);</span><br><span class="line">closeButton-&gt;setProperty(&quot;level&quot;, &quot;dangerous&quot;);</span><br></pre></td></tr></table></figure>
-<p>QSS 会把所有 QPushButton 中属性 level 值为 dangerous 按钮的背景绘制为洋红色，其他按钮的背景色不受这个 QSS 影响。</p>
-<blockquote>
-<p>注意: 程序运行时属性值变化后 QSS 不会自动生效，需要调用 widget-&gt;setStyleSheet(“/**/“) 强制刷新 QSS 才行。</p>
-</blockquote>
-<p>属性的值可以用单引号、双引号括起来，如果值没有空格甚至可以不用引号 (不推荐这么做)，以下三种写法都是有效的:</p>
-<ul>
-<li><strong>.QPushButton[level=”dangerous”]</strong></li>
-<li><strong>.QPushButton[level=’dangerous’]</strong></li>
-<li><strong>.QPushButton[level=dangerous]</strong></li>
-</ul>
-<h1 id="包含选择器"><a href="#包含选择器" class="headerlink" title="包含选择器"></a>包含选择器</h1><p>英语叫做 <code>Descendant Selector</code>，descendant 的表达比较到位。</p>
-<p><code>选择器之间用空格隔开</code>，作用于 Widget 的 <code>子Widget</code>，<code>子Widget 的 子Widget</code>，……，子子孙孙，无穷尽也。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">	background: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 设置 QFrame 中的 QPushButton 的 QSS */</span><br><span class="line">QFrame QPushButton &#123;</span><br><span class="line">    border: 2px solid magenta;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    background: white;</span><br><span class="line">    padding: 2px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>顶部的 QPushButton 是 QFrame 的 descendant，所以 QSS 生效了，左下角的 QPushButton 的 parent 是 QWidget，所以 QSS 不起作用:<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Descendant-Selector.png" alt></p>
-<h1 id="子元素选择器"><a href="#子元素选择器" class="headerlink" title="子元素选择器"></a>子元素选择器</h1><p><code>选择器之间用 &gt; 隔开</code>，作用于 Widget 的 <code>直接 子Widget</code>，注意和包含选择器的区别。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">	background: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QFrame &gt; QPushButton &#123;</span><br><span class="line">    border: 2px solid magenta;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    background: white;</span><br><span class="line">    padding: 2px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>按钮 <code>Child of QGroupBox</code> 的 parent 是 QGroupBox，QGroupBox 的 parent 是 QFrame，所以 <code>Child of QGroupBox</code> 虽然是 QFrame 的 <code>子Widget 的 子Widget</code>，但不是 QFrame 的<code>直接 子Widget</code>，故 QSS 不起作用，而 按钮 <code>Child of QFrame</code> 的 parent 是 QFrame，所以它的样式改变了:<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Child-Selector.png" alt></p>
-<h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><p><code>选择器:状态</code> 作为选择器，支持 <code>!</code> 操作符，表示 <code>非</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QPushButton:hover &#123; color: white &#125;</span><br><span class="line">QCheckBox:checked &#123; color: white &#125;</span><br><span class="line">QCheckBox:!checked &#123; color: red &#125;</span><br></pre></td></tr></table></figure>
-<p>鼠标放到 QPushButton 上时，它的文字为白色，QCheckBox 选中时文字为白色，未选中时为红色。</p>
-<p>伪类选择器还支持链式规则：<code>选择器:状态1:状态2:状态3</code>，状态之间使用逻辑与，同时满足条件样式才生效​</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox:hover:checked &#123; color: white &#125;</span><br></pre></td></tr></table></figure>
-<p>鼠标 <code>放到</code> <code>选中的</code> QCheckBox 上时，它的字体为白色。</p>
-<p><strong>常用伪类选择器有：</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">伪类</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">:disabled</td>
-<td style="text-align:left">Widget 被禁用时</td>
-</tr>
-<tr>
-<td style="text-align:left">:enabled</td>
-<td style="text-align:left">Widget 可使用时</td>
-</tr>
-<tr>
-<td style="text-align:left">:focus</td>
-<td style="text-align:left">Widget 得到输入焦点</td>
-</tr>
-<tr>
-<td style="text-align:left">:hover</td>
-<td style="text-align:left">鼠标放到 Widget 上</td>
-</tr>
-<tr>
-<td style="text-align:left">:pressed</td>
-<td style="text-align:left">鼠标按下时</td>
-</tr>
-<tr>
-<td style="text-align:left">:checked</td>
-<td style="text-align:left">被选中时</td>
-</tr>
-<tr>
-<td style="text-align:left">:unchecked</td>
-<td style="text-align:left">未选中时</td>
-</tr>
-<tr>
-<td style="text-align:left">:has-children</td>
-<td style="text-align:left">Item 有子 item，例如 QTreeView 的 item 有子 item 时</td>
-</tr>
-<tr>
-<td style="text-align:left">:has-siblings</td>
-<td style="text-align:left">Item 有 兄弟，例如 QTreeView 的 item 有兄弟 item 时</td>
-</tr>
-<tr>
-<td style="text-align:left">:open</td>
-<td style="text-align:left">打开或展开状态，例如 QTreeView 的 item 展开，QPushButton 的菜单弹出时</td>
-</tr>
-<tr>
-<td style="text-align:left">:closed</td>
-<td style="text-align:left">关闭或者非展开状态</td>
-</tr>
-<tr>
-<td style="text-align:left">:on    Widget</td>
-<td style="text-align:left">状态是可切换的（toggle）, 在 on 状态</td>
-</tr>
-<tr>
-<td style="text-align:left">:off</td>
-<td style="text-align:left">Widget 状态是可切换的（toggle）, 在 off 状态</td>
-</tr>
-</tbody>
-</table>
-<p>伪类的说明写成中文怎么感觉都很别扭，惭愧，表达能力欠佳，在此仅作为抛砖引玉吧，更多更详细的内容请参考 Qt 的帮助文档，搜索 Qt Style Sheets Reference，查看最下面的 List of Pseudo-States。</p>
-<p>当然，这些伪类并不是对任何 widget 都起作用，例如 QLabel 没有 :checked 状态，即使设置了样式 QLabel:checked {color: red}，对 QLabel 也是没有效果的，只有 widget 支持某个状态，那么对应的伪类的样式才有作用。</p>
-<p>Subcontrol 选择器<br>选择器::subcontrol 作为选择 Subcontrol 的选择器。</p>
-<p>有些 widget 是由多个部分组合成的，例如 QCheckBox 由 icon(indicator) 和 text 组成，可以使用 选择器::subcontrol 来设置 subcontrol 的样式：</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>QCheckBox::indicator {<br>    width: 20px;<br>    height: 20px;<br>}</p>
-<p>QCheckBox {<br>    spacing: 8px;<br>}</p>
-<p>常用的 Subcontrol 有:</p>
-<p>Subcontrol    说明<br>::indicator    A QCheckBox, QRadioButton, checkable QMenu item,<br>or a checkable QGroupBox’s indicator<br>::menu-indicator    A QPushButton’s menu indicator<br>::item    A QMenu, QMenuBar, or QStatusBar’s item<br>::up-button    A QSpinBox or QScrollBar’s up button<br>::down-button    A QSpinBox or QScrollBar’s down button<br>::up-arrow    A QSpinBox, QScrollBar, or QHeaderView’s up arrow<br>::down-arrow    A QSpinBox, QScrollBar, or QHeaderView’s down arrow<br>::drop-down    A QComboBox’s drop-down arrow<br>::title    A QGroupBox or QDockWidget’s title<br>::groove    A QSlider’s groove<br>::chunk    A QProgressBar’s progress chunk<br>::branch    A QTreeView’s branch indicator<br>Subcontrol 选择器的应用比较复杂，所以专门开辟了 QSS Subcontrol 一章来介绍。</p>
-
+    <p>选择器决定了 style sheet 作用于哪些 widget，QSS 支持 <a href="https://www.w3.org/TR/CSS2/selector.html#q1" target="_blank" rel="noopener">CSS2 定义的所有选择器</a>。</p>
+    
     
 
     
@@ -1232,11 +1113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
+                <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
