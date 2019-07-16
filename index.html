@@ -157,6 +157,205 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-qss-selector" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/11/qss-selector/">QSS 选择器</a>
+    </h1>
+  
+
+  
+  <a href="/2019/07/11/qss-selector/" class="archive-article-date">
+	
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_page_pv" style="display:none">
+		总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+	<span class="post-meta-divider" style="display:none">   </span>
+	
+	<time datetime="2019-07-11T11:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+</a>
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <a id="more"></a>
+<p>选择器决定了 style sheet 作用于哪些 widget，QSS 支持 <a href="https://www.w3.org/TR/CSS2/selector.html#q1" target="_blank" rel="noopener">CSS2 定义的所有选择器</a>。</p>
+<p><strong>QSS 的选择器有</strong></p>
+<ul>
+<li>通用选择器 *</li>
+<li>类型选择器</li>
+<li>类选择器</li>
+<li>ID 选择器</li>
+<li>属性选择器</li>
+<li>包含选择器</li>
+<li>子元素选择器</li>
+<li>伪类选择器</li>
+<li>Subcontrol 选择器</li>
+</ul>
+<p>很多时候，可以使用不同的选择器实现相同效果的样式，使用非常灵活。</p>
+<h1 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器 *"></a>通用选择器 *</h1><p><code>*</code> 作为选择器，作用于所有的 widget。</p>
+<h1 id="类型选择器"><a href="#类型选择器" class="headerlink" title="类型选择器"></a>类型选择器</h1><p><code>类名</code> 作为选择器，作用于它自己和它的所有子类。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">   background: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用了类型选择器 <code>QFrame</code>，所以 QFrame 和它的子类 QLable，QLCDNumber，QTableWidget 等的背景会是灰色的，QPushButton 不是 QFrame 的子类，所以不受影响：<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Type-Selector.png" alt></p>
+<h1 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h1><p><code>. + 类名</code> 或者 <code>. + class</code> 的属性值 作为选择器（使用 setProperty(“class”, “QSSClassName”) 设置），只会作用于它自己，它的子类不受影响，注意和类型选择器的区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line">#include &lt;QHBoxLayout&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line"></span><br><span class="line">    app.setStyleSheet(&quot;QWidget &#123; background: gray; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">    QWidget *window = new QWidget();</span><br><span class="line">    QPushButton *openButton  = new QPushButton(&quot;打开&quot;, window);</span><br><span class="line">    QPushButton *closeButton = new QPushButton(&quot;关闭&quot;, window);</span><br><span class="line">    QPushButton *saveButton  = new QPushButton(&quot;保存&quot;, window);</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout = new QHBoxLayout(window);</span><br><span class="line">    layout-&gt;addWidget(openButton);</span><br><span class="line">    layout-&gt;addWidget(closeButton);</span><br><span class="line">    layout-&gt;addWidget(saveButton);</span><br><span class="line">    window-&gt;setLayout(layout);</span><br><span class="line">    window-&gt;show();</span><br><span class="line"></span><br><span class="line">    return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>window, openButton, closeButton 和 saveButton 的背景都变成灰色的了，如果只想要 window 的背景是灰色的，按钮的背景不变，可以使用类选择器 <code>.QWidget</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* 把 QWidget 改成 .QWidget */</span><br><span class="line">app.setStyleSheet(&quot;.QWidget &#123;background: gray;&#125;&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>如果 openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，则可以使用 <code>. ＋ class 的属性值</code> 作为类选择器来设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;.RedButton &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">// .RedButton 将作为类选择器</span><br><span class="line">openButton-&gt;setProperty(&quot;class&quot;,  &quot;RedButton&quot;);</span><br><span class="line">closeButton-&gt;setProperty(&quot;class&quot;, &quot;RedButton&quot;);</span><br></pre></td></tr></table></figure></p>
+<p><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Class-Selector.png" alt></p>
+<h1 id="ID-选择器"><a href="#ID-选择器" class="headerlink" title="ID 选择器"></a>ID 选择器</h1><p><code># + objectName</code> 作为选择器，只作用于用此 objectName 的对象（多个对象可以使用同一个 objectName，但是不推荐这么做，既然是 ID，那么语义上就表示唯一了）。如上面的程序， openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，也可以使用 <code>ID 选择器</code> 来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// #openButton 和 #closeButton 作为 ID 选择器</span><br><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;#openButton, #closeButton &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">openButton-&gt;setObjectName(&quot;openButton&quot;);</span><br><span class="line">closeButton-&gt;setObjectName(&quot;closeButton&quot;);</span><br></pre></td></tr></table></figure></p>
+<h1 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h1><p><code>选择器[属性=&quot;值&quot;]</code> 作为选择器，这个属性可用通过 <code>object-&gt;property(propertyName)</code> 访问的，Qt 里称为 <code>Dynamic Properties</code>。</p>
+<p>如上面的程序， openButton 和 closeButton 的背景是洋红色的，但是 saveButton 不受影响，也可以使用属性选择器来实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.setStyleSheet(&quot;.QWidget &#123; background: gray; &#125;&quot;</span><br><span class="line">                  &quot;QPushButton[level=&apos;dangerous&apos;] &#123; background: magenta; &#125;&quot;);</span><br><span class="line"></span><br><span class="line">openButton-&gt;setProperty(&quot;level&quot;,  &quot;dangerous&quot;);</span><br><span class="line">closeButton-&gt;setProperty(&quot;level&quot;, &quot;dangerous&quot;);</span><br></pre></td></tr></table></figure>
+<p>QSS 会把所有 QPushButton 中属性 level 值为 dangerous 按钮的背景绘制为洋红色，其他按钮的背景色不受这个 QSS 影响。</p>
+<blockquote>
+<p>注意: 程序运行时属性值变化后 QSS 不会自动生效，需要调用 widget-&gt;setStyleSheet(“/**/“) 强制刷新 QSS 才行。</p>
+</blockquote>
+<p>属性的值可以用单引号、双引号括起来，如果值没有空格甚至可以不用引号 (不推荐这么做)，以下三种写法都是有效的:</p>
+<ul>
+<li><strong>.QPushButton[level=”dangerous”]</strong></li>
+<li><strong>.QPushButton[level=’dangerous’]</strong></li>
+<li><strong>.QPushButton[level=dangerous]</strong></li>
+</ul>
+<h1 id="包含选择器"><a href="#包含选择器" class="headerlink" title="包含选择器"></a>包含选择器</h1><p>英语叫做 <code>Descendant Selector</code>，descendant 的表达比较到位。</p>
+<p><code>选择器之间用空格隔开</code>，作用于 Widget 的 <code>子Widget</code>，<code>子Widget 的 子Widget</code>，……，子子孙孙，无穷尽也。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">	background: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 设置 QFrame 中的 QPushButton 的 QSS */</span><br><span class="line">QFrame QPushButton &#123;</span><br><span class="line">    border: 2px solid magenta;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    background: white;</span><br><span class="line">    padding: 2px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>顶部的 QPushButton 是 QFrame 的 descendant，所以 QSS 生效了，左下角的 QPushButton 的 parent 是 QWidget，所以 QSS 不起作用:<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Descendant-Selector.png" alt></p>
+<h1 id="子元素选择器"><a href="#子元素选择器" class="headerlink" title="子元素选择器"></a>子元素选择器</h1><p><code>选择器之间用 &gt; 隔开</code>，作用于 Widget 的 <code>直接 子Widget</code>，注意和包含选择器的区别。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">QFrame &#123;</span><br><span class="line">	background: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QFrame &gt; QPushButton &#123;</span><br><span class="line">    border: 2px solid magenta;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    background: white;</span><br><span class="line">    padding: 2px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按钮 <code>Child of QGroupBox</code> 的 parent 是 QGroupBox，QGroupBox 的 parent 是 QFrame，所以 <code>Child of QGroupBox</code> 虽然是 QFrame 的 <code>子Widget 的 子Widget</code>，但不是 QFrame 的<code>直接 子Widget</code>，故 QSS 不起作用，而 按钮 <code>Child of QFrame</code> 的 parent 是 QFrame，所以它的样式改变了:<br><img src="//brokenrain.github.io/2019/07/11/qss-selector/QSS-Selector-Child-Selector.png" alt></p>
+<h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><p><code>选择器:状态</code> 作为选择器，支持 <code>!</code> 操作符，表示 <code>非</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QPushButton:hover &#123; color: white &#125;</span><br><span class="line">QCheckBox:checked &#123; color: white &#125;</span><br><span class="line">QCheckBox:!checked &#123; color: red &#125;</span><br></pre></td></tr></table></figure>
+<p>鼠标放到 QPushButton 上时，它的文字为白色，QCheckBox 选中时文字为白色，未选中时为红色。</p>
+<p>伪类选择器还支持链式规则：<code>选择器:状态1:状态2:状态3</code>，状态之间使用逻辑与，同时满足条件样式才生效​</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox:hover:checked &#123; color: white &#125;</span><br></pre></td></tr></table></figure>
+<p>鼠标 <code>放到</code> <code>选中的</code> QCheckBox 上时，它的字体为白色。</p>
+<p><strong>常用伪类选择器有：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">伪类</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">:disabled</td>
+<td style="text-align:left">Widget 被禁用时</td>
+</tr>
+<tr>
+<td style="text-align:left">:enabled</td>
+<td style="text-align:left">Widget 可使用时</td>
+</tr>
+<tr>
+<td style="text-align:left">:focus</td>
+<td style="text-align:left">Widget 得到输入焦点</td>
+</tr>
+<tr>
+<td style="text-align:left">:hover</td>
+<td style="text-align:left">鼠标放到 Widget 上</td>
+</tr>
+<tr>
+<td style="text-align:left">:pressed</td>
+<td style="text-align:left">鼠标按下时</td>
+</tr>
+<tr>
+<td style="text-align:left">:checked</td>
+<td style="text-align:left">被选中时</td>
+</tr>
+<tr>
+<td style="text-align:left">:unchecked</td>
+<td style="text-align:left">未选中时</td>
+</tr>
+<tr>
+<td style="text-align:left">:has-children</td>
+<td style="text-align:left">Item 有子 item，例如 QTreeView 的 item 有子 item 时</td>
+</tr>
+<tr>
+<td style="text-align:left">:has-siblings</td>
+<td style="text-align:left">Item 有 兄弟，例如 QTreeView 的 item 有兄弟 item 时</td>
+</tr>
+<tr>
+<td style="text-align:left">:open</td>
+<td style="text-align:left">打开或展开状态，例如 QTreeView 的 item 展开，QPushButton 的菜单弹出时</td>
+</tr>
+<tr>
+<td style="text-align:left">:closed</td>
+<td style="text-align:left">关闭或者非展开状态</td>
+</tr>
+<tr>
+<td style="text-align:left">:on    Widget</td>
+<td style="text-align:left">状态是可切换的（toggle）, 在 on 状态</td>
+</tr>
+<tr>
+<td style="text-align:left">:off</td>
+<td style="text-align:left">Widget 状态是可切换的（toggle）, 在 off 状态</td>
+</tr>
+</tbody>
+</table>
+<p>伪类的说明写成中文怎么感觉都很别扭，惭愧，表达能力欠佳，在此仅作为抛砖引玉吧，更多更详细的内容请参考 Qt 的帮助文档，搜索 Qt Style Sheets Reference，查看最下面的 List of Pseudo-States。</p>
+<p>当然，这些伪类并不是对任何 widget 都起作用，例如 QLabel 没有 :checked 状态，即使设置了样式 QLabel:checked {color: red}，对 QLabel 也是没有效果的，只有 widget 支持某个状态，那么对应的伪类的样式才有作用。</p>
+<p>Subcontrol 选择器<br>选择器::subcontrol 作为选择 Subcontrol 的选择器。</p>
+<p>有些 widget 是由多个部分组合成的，例如 QCheckBox 由 icon(indicator) 和 text 组成，可以使用 选择器::subcontrol 来设置 subcontrol 的样式：</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>QCheckBox::indicator {<br>    width: 20px;<br>    height: 20px;<br>}</p>
+<p>QCheckBox {<br>    spacing: 8px;<br>}</p>
+<p>常用的 Subcontrol 有:</p>
+<p>Subcontrol    说明<br>::indicator    A QCheckBox, QRadioButton, checkable QMenu item,<br>or a checkable QGroupBox’s indicator<br>::menu-indicator    A QPushButton’s menu indicator<br>::item    A QMenu, QMenuBar, or QStatusBar’s item<br>::up-button    A QSpinBox or QScrollBar’s up button<br>::down-button    A QSpinBox or QScrollBar’s down button<br>::up-arrow    A QSpinBox, QScrollBar, or QHeaderView’s up arrow<br>::down-arrow    A QSpinBox, QScrollBar, or QHeaderView’s down arrow<br>::drop-down    A QComboBox’s drop-down arrow<br>::title    A QGroupBox or QDockWidget’s title<br>::groove    A QSlider’s groove<br>::chunk    A QProgressBar’s progress chunk<br>::branch    A QTreeView’s branch indicator<br>Subcontrol 选择器的应用比较复杂，所以专门开辟了 QSS Subcontrol 一章来介绍。</p>
+
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/07/11/qss-selector/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-qt-qss-base" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -184,111 +383,8 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <a id="more"></a>
-<p>如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    /* 相当于 font: bold 50px &quot;Snell Roundhand&quot;; */</span><br><span class="line">    font-size: 50px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    font-family: &quot;Snell Roundhand&quot;;</span><br><span class="line"></span><br><span class="line">    /* 文本的颜色 */</span><br><span class="line">    color: white;</span><br><span class="line"></span><br><span class="line">    /* 相当于 background: lightgray url(:/resources/horizontal-add-line.png); */</span><br><span class="line"></span><br><span class="line">    background-color: lightgray;</span><br><span class="line">    background-image: url(:/resources/horizontal-add-line.png);</span><br><span class="line"></span><br><span class="line">    /* 还能使用渐变 */</span><br><span class="line">    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                      stop: 0 #FFFFFF, stop: 1 #BB000000);</span><br><span class="line"></span><br><span class="line">    /* 相当于 border: 5px solid gray; */</span><br><span class="line">    border-width: 5px;</span><br><span class="line">    border-color: gray;</span><br><span class="line">    border-style: solid;</span><br><span class="line"></span><br><span class="line">    /* 边框圆角 */</span><br><span class="line">    border-radius: 10px;</span><br><span class="line"></span><br><span class="line">    padding: 5px;</span><br><span class="line">    margin: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下图是上面 QSS 的效果图:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-base/Preview.png" alt></p>
-<h2 id="下面具体介绍一下-QSS-的基础语法"><a href="#下面具体介绍一下-QSS-的基础语法" class="headerlink" title="下面具体介绍一下 QSS 的基础语法:"></a>下面具体介绍一下 QSS 的基础语法:</h2><ul>
-<li>设置字体用 <code>font</code>, 语法为：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">font: [font-style] [font-variant] [font-weight] [font-size] [font-family]</span><br><span class="line"></span><br><span class="line">/* 按顺序设置，可以忽略其中某些值，例如：*/</span><br><span class="line">font: italic bold 12px arial, sans-serif;</span><br></pre></td></tr></table></figure>
-<p>设置字体用 <code>font-style</code>, <code>font-size</code>, <code>font-weight</code>, <code>font-family</code>（和 CSS 一样，如果字体名字有空格则用双引号引起来，多个字体名字间用逗号分隔，如果第一个字体找不到则用第二个，第二个找不到则用第三个，依此类推）</p>
-<ul>
-<li>设置文本颜色用 <code>color</code></li>
-<li>设置背景颜色用 <code>background-color</code></li>
-<li>设置背景使用 <code>background</code>，可以设置如下属性：<ul>
-<li>background-color</li>
-<li>background-position</li>
-<li><del>background-size</del></li>
-<li>background-repeat</li>
-<li>background-origin</li>
-<li>background-clip</li>
-<li>background-attachment</li>
-<li>background-image</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* 可以忽略其中某些值，例如：*/background: lightgray url(:/resources/horizontal-add-line.png);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>url 中的路径可以是：<ul>
-<li>资源文件的路径</li>
-<li>绝对路径</li>
-<li>相对于可执行文件的相对路径<ul>
-<li>设置背景图片用 <code>background-image</code>（先绘制背景色，然后再绘制背景图片，如果背景图片是半透明的就可以看到背景色了），默认水平和垂直重复平铺满整个 widget，同时一起设置的还可以有 <code>background-repeat</code>、<code>background-position</code>、<code>background-attachment</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>background-repeat，可选的值有：<ul>
-<li>repeat-x：水平方向重复</li>
-<li>epeat-y：垂直方向重复</li>
-<li>no-repeat：不重复</li>
-</ul>
-</li>
-<li>background-position，可选的值有：<ul>
-<li>top left</li>
-<li>top center</li>
-<li>top right</li>
-<li>center left</li>
-<li>center center</li>
-<li>center right</li>
-<li>bottom left</li>
-<li>bottom center</li>
-<li>bottom right</li>
-<li><del>xpos ypos</del></li>
-</ul>
-</li>
-<li>background-attachment，可选的值有：<ul>
-<li>scroll：背景随滚动条滚动</li>
-<li>fixed：背景不随滚动条滚动</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>设置背景还可以用 <code>border-image</code>，请参考 <a href="https://qtdebug.com/qtbook-qss-border-image/" target="_blank" rel="noopener">Border Image</a> 一节</li>
-<li>设置边框用 <code>border-width</code>, <code>border-style</code>, <code>border-color</code></li>
-<li>设置边框用 <code>border</code>，语法为：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border: border-width border-style border-color</span><br><span class="line"></span><br><span class="line">/* 例如：*/</span><br><span class="line">border: 1px solid gray;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置圆角边框用 <code>border-radius</code>，<strong>但是如果给定的半径大于对应边的一半，圆角就没有效果了</strong>，在 CSS 里没有这个问题</li>
-<li>支持渐变 gradient: <code>qlineargradient</code>、<code>qradialgradient</code>、<code>qconicalgradient</code>，渐变的坐标不是用像素表示，而是把渐变的坐标的最小值定义为 0，最大值定义为 1，这种技术又叫 <code>Normalization</code>，通俗点说就是用比例表示，开始处用 0 表示，结束处用 1 表示，不管渐变的范围是 200px 还是 500px，按比例都能计算出实际的像素坐标，这样做的好处是，不需要关心渐变的像素坐标范围的具体数值。如果不用 <code>Normalization</code> 技术，widget 的大小一变化，就需要修改 QSS 里的坐标值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">x1: 0, y1: 0，渐变的开始位置，为 border rectangle 的左上角（请参考盒子模型）</span><br><span class="line">x2: 0, y2: 1，渐变的开始位置，为 border rectangle 的左下角</span><br><span class="line">stop: 0.1 #FF0000，在 0.0 处渐变的颜色为 #FF0000</span><br><span class="line">stop: 0.6 #00FF00，在 0.6 处渐变的颜色为 #00FF00</span><br><span class="line">stop: 1.0 #0000FF，在 1.0 处渐变的颜色为 #0000FF</span><br><span class="line">*/</span><br><span class="line">background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                        stop: 0.1 #FF0000,</span><br><span class="line">                        stop: 0.6 #00FF00,</span><br><span class="line">                        stop: 1.0 #0000FF);</span><br></pre></td></tr></table></figure>
-<p>渐变效果比较复杂，可以使用 Qt Desginer 的 QSS 编辑器来帮助我们可视化的实现复杂的渐变效果，如下图:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-base/Gradient.png" alt></p>
-<ul>
-<li><code>Padding</code> 和 <code>margin</code> 参考<a href="https://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/">盒子模型</a>一节</li>
-<li>设置图标，如 QToolButton 的图标：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 图标大小 */</span><br><span class="line">icon-size: 20px 20px;</span><br><span class="line"></span><br><span class="line">/* 图标文件 */</span><br><span class="line">qproperty-icon: url(:/resources/tabset-left.png);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置宽度用 <code>width</code>，高度用 <code>height</code>，设置 subcontrol 的时候比较有用</li>
-<li>设置最小宽度用 <code>min-width</code>，最小高度用 <code>min-height</code>（是 content rectangle 的宽和高）</li>
-<li>设置最大宽度用 <code>max-width</code>，最大高度用 <code>max-height</code></li>
-<li>遗憾的是，QSS 不支持阴影</li>
-<li>使用 <code>qproperty-xxx</code> 进行设置，因为在 QWidget 及其子类中使用宏 Q_PROPERTY 定义的 WRITE 函数可以在 QSS 中访问：<ul>
-<li><code>text-align</code> 不支持 QLable，但设置 QLabel 的文本居中可以这样：<code>qproperty-alignment: AlignCenter</code></li>
-<li>甚至可以在 QSS 中设置 QLabel，QPushButton 等的文本：<code>qproperty-text: &#39;It is amazing&#39;</code>，太魔性了</li>
-<li>设置 QLabel 的 word wrap: <code>qproperty-wordWrap: true</code></li>
-<li>设置对齐方式：<ul>
-<li><code>qproperty-alignment: &#39;AlignCenter&#39;s</code></li>
-<li><code>qproperty-alignment: &#39;AlignBottom | AlignRight&#39;</code></li>
-</ul>
-</li>
-<li>设置按钮:<ul>
-<li>设置 flat: <code>qproperty-flat: true</code></li>
-<li>设置图标: <code>qproperty-icon: url(:/resources/tabset-left.png)</code></li>
-</ul>
-</li>
-<li>QWidget 及其子类还有很多 Q_PROPERTY 定义的 WRITE 函数，想知道就去查帮助文档吧</li>
-<li>我们也可以使用宏 Q_PROPERTY 定义自己的 WRITE 函数，然后在 QSS 中使用</li>
-<li>不过 <code>qproperty-xxx</code> 也不是万能的，在 <code>:hover, :pressed</code> 等伪类选择器中不生效</li>
-</ul>
-</li>
-</ul>
-<p>上面的 QSS 的虽然只是基础，但是很重要，大多数的时候都要用到它们，用来修改 QLabel，QPushButton，QFrame，QWidget 等的样式还基本够用了，不过如果要修改复杂一点的 widget 的样式，如 QSpinBox，QScrollBar 等，上面的知识是不够的，要想掌握好 QSS，还必须了解 <code>QSS 的选择器</code>，<code>盒子模型</code>，<code>Border-Image</code>，<code>Subcontrol</code> 等，这些在后面都有专门的章节介绍。</p>
-<p>原文地址：<a href="https://qtdebug.com/qtbook-qss-base/" target="_blank" rel="noopener">https://qtdebug.com/qtbook-qss-base/</a> 博主狗哥的其他博文也写的非常好，从他这里学到了很多，需要的同学可以去看看<a href="https://qtdebug.com/qtbook/" target="_blank" rel="noopener">https://qtdebug.com/qtbook/</a></p>
-
+    <p>如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。</p>
+    
     
 
     
@@ -367,128 +463,8 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <a id="more"></a>
-<p>每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png" alt></p>
-<ul>
-<li><code>content</code>: 绘制内容的矩形区域（如绘制文本、图片），Qt 自带的 widget 都是在 content 区里绘制内容，这只是一个约定，只要你愿意，也可以在绘制到 padding, border, margin 区</li>
-<li><code>padding</code>: 内容区和边框之间的间隔</li>
-<li><code>border</code>: 边框，可视化的显示一个 widget 的逻辑范围，而不一定是 widget 所占矩形区域的实际大小</li>
-<li><code>margin</code>: 想像 widget 的矩形区域有一个隐形的边框，margin 就是 border 和这个隐形边框之间的间隔</li>
-</ul>
-<p>QWidget 的 content, padding, border, margin 的矩形区域都是一样大的，也就是说，margin, border, padding 的值为 0，content 的矩形和 QWidget 的矩形一样大，但是 QPushButton 默认的 margin, border, padding 的值不为 0（可以试试 <code>setFlat(true)</code> 后再看看这几个值是什么）。</p>
-<p>Margin，Border，Padding 都分为 4 个部分：上、右、下、左，它们的值可以不同：<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-1.png" alt></p>
-<h2 id="padding-的语法"><a href="#padding-的语法" class="headerlink" title="padding 的语法"></a>padding 的语法</h2><ul>
-<li>padding: 2px 3px 4px 5px 表示:<ul>
-<li>padding-top 为 2px</li>
-<li>padding-right 为 3px</li>
-<li>padding-bottom 为 4px</li>
-<li>padding-left 为 5px</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><code>padding: 2px 4px</code> 表示:<ul>
-<li>padding-top 和 padding-bottom 为 2px</li>
-<li>padding-right 和 padding-left 为 4px</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><code>padding: 2px</code> 表示:<ul>
-<li>padding-top、padding-right、padding-bottom、padding-left 都为 2px</li>
-</ul>
-</li>
-</ul>
-<p>margin 的语法和 padding 的一样，border 除了分成 4 个部分外，还有颜色，圆角等。<br>也许你也有和我一样的疑问，为什么上面表示的顺序不是从左开始，而是从上开始？对我来说，从左开始更习惯一些，但是 CSS 和 QSS 里就是这么规定的，没办法，既然不能反抗，那么就享受吧！</p>
-<h2 id="padding-是什么"><a href="#padding-是什么" class="headerlink" title="padding 是什么"></a>padding 是什么</h2><p>可能你还是不明白 margin, padding 具体是什么，下面用例子具体的的介绍它们。在 Qt Designer 里用 QGridLayout 布局，拖放一个 QLabel 到窗口上，让其占据整个窗口，用下面的 QSS 把 QLabel 的 margin, border, padding 都设置为 50px：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 50px;</span><br><span class="line">    border: 50px solid rgb(74, 74, 74);</span><br><span class="line">    padding: 50px;</span><br><span class="line">    background: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-2.png" alt></p>
-<h3 id="在-Qt-Designer-里选中-QLabel"><a href="#在-Qt-Designer-里选中-QLabel" class="headerlink" title="在 Qt Designer 里选中 QLabel:"></a>在 Qt Designer 里选中 QLabel:</h3><ul>
-<li>8 个蓝色小方块内就是 QLabel，外面是 parent widget 的，不属于 QLabel</li>
-<li>标记为 margin 的部分是 margin，为 50px</li>
-<li>标记为 padding 的部分是 padding，为 50px</li>
-<li>用工具测量一下，得到 border 的宽也是 50px</li>
-<li>小虚线方框内是 content rectangle，QLabel 就是在它里面绘制文本，图片等，不会绘制到 padding, border, margin 等上面（如果你自己想继承 QLabel 然后绘制到它们上面当然没问题）</li>
-<li>当拖动修改窗口的大小后，QLabel 的大小随着改变了，但是 margin, border（宽）, padding 的大小都不会变，变化的只有 content rectangle</li>
-<li>Margin 是不可见的，不绘制任何东西</li>
-<li>Padding 是不可见的，但是 QLabel 的背景会绘制到它里面</li>
-<li>Border 是可见的，在背景上面绘制 border（如果 border 是半透明的时候可以看到和背景的融合效果），也就是说，背景会绘制到 padding, border, content 3 个部分上</li>
-<li>Content 是可见的，在背景上绘制 QLabel 的内容：文本，图片</li>
-</ul>
-<h2 id="计算-border-和-content-的矩形"><a href="#计算-border-和-content-的矩形" class="headerlink" title="计算 border 和 content 的矩形"></a>计算 border 和 content 的矩形</h2><p>Padding 和 margin 都是不可见的，用它们来控制间隔，让绘制的效果更好，只有 border 和 content 是可见的。Border 和 content 要绘制在它们自己的矩形区域内，那么这些矩形怎么计算呢？Content 的矩形一定要在 border 的矩形内吗？</p>
-<h3 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h3><ul>
-<li>Widget 的矩形为 widgetRect，其实就是 (0, 0, width, height)</li>
-<li>Border 的矩形为 borderRect</li>
-<li>Content 的矩形为 contentRect</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 计算 border 的矩形</span><br><span class="line">borderRect.x = marginLeft</span><br><span class="line">borderRect.y = marginTop</span><br><span class="line">borderRect.width  = widgetRect.width  - marginLeft - marginRight</span><br><span class="line">borderRect.height = widgetRect.height - marginTop  - marginBottom</span><br><span class="line"></span><br><span class="line">// 计算 content 的矩形</span><br><span class="line">contentRect.x = marginLeft + borderLeft + paddingLeft</span><br><span class="line">contentRect.y = marginTop  + borderTop  + paddingTop</span><br><span class="line">contentRect.width  = widgetRect.width -</span><br><span class="line">    marginLeft     - borderLeft   - paddingLeft -</span><br><span class="line">    paddingRight   - borderRight  - marginRight;</span><br><span class="line">contentRect.height = widgetRect.height -</span><br><span class="line">    marginTop      - borderTop    - paddingTop -</span><br><span class="line">    paddingBottom  - borderBottom - marginBottom;</span><br></pre></td></tr></table></figure>
-<h3 id="为了简单起见，下面的-margin-指的是它对应的-4-个值，而且都一样大，padding-也一样"><a href="#为了简单起见，下面的-margin-指的是它对应的-4-个值，而且都一样大，padding-也一样" class="headerlink" title="为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:"></a>为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:</h3><ul>
-<li>Margin 大于 0 时，borderRect 在 widgetRect 内</li>
-<li>Margin 小于 0 时，borderRect 包含 widgetRect</li>
-<li>Padding 大于 0 时，contentRect 在 borderRect 内</li>
-<li>Padding 小于 0 时，contentRect 和 borderRect 中绘制 border 的区域相交，甚至包含 borderRect</li>
-</ul>
-<p>Qt 绘制自带的 Widget 时，先绘制 border，然后才绘制 content 的内容，所以，padding 小于 0 时，可以看到 content 绘制到了 border 上，在 Border-Image 一节里，就会使用这个特点，使得实现的效果更好。</p>
-<h3 id="需要注意的是"><a href="#需要注意的是" class="headerlink" title="需要注意的是:"></a>需要注意的是:</h3><ul>
-<li>QWidget::contentsRect() 和上面的 contentRect 一样</li>
-<li>QWidget::contentsMargins() 不是 margin，而是 margin + border + padding 的和: content 离边框的距离</li>
-<li>QWidget::size() 返回的是 margin + border + padding + content 的和</li>
-<li>需要注意一点: QSS 中设置的 width, height, min-width, max-height 等设置的都是 content width 和 content height，而 QWidget::size() 返回的却是整个 QWidget 的大小</li>
-</ul>
-<h2 id="可视化盒子模型"><a href="#可视化盒子模型" class="headerlink" title="可视化盒子模型"></a>可视化盒子模型</h2><p>下面的程序，可以直观地验证盒子模型的理论，有助于加深理解，界面虽然俗气了点，但效果却是不凡，正所谓：大俗即大雅。顶级窗口的 content margin 和 spacing 设置为 0，有 4 个 QLabel，它们只有 border 的颜色不一样，还有一个 QPushButton，按下 QPushButton 时输出左上角 flagLabel 的 size(), contentsRect() 和 contentsMargins()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MainWidget::MainWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent), ui(new Ui::MainWidget) &#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line"></span><br><span class="line">    // 为了简化代码，使用了 C++11 才支持的 Lambda 语法的信号槽连接</span><br><span class="line">    connect(ui-&gt;dumpButton, &amp;QPushButton::clicked, [this]() &#123;</span><br><span class="line">        qDebug() &lt;&lt; &quot;Label size: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;size();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents rect: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsRect();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents margins: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsMargins();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 0px;</span><br><span class="line">    padding: 0px;</span><br><span class="line">    border-width: 30px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    background: white;</span><br><span class="line">    min-width: 140px;  /* 设置 content rect 的最小 width，不是 widget 的 width() */</span><br><span class="line">    min-height: 140px; /* 设置 content rect 的最小 heightd，不是 widget 的 height()*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#flagLabel &#123;</span><br><span class="line">    border-color: qlineargradient(</span><br><span class="line">    spread:pad, x1:0,</span><br><span class="line">    y1:0, x2:0, y2:1,</span><br><span class="line">    stop:0 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.33 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.34 rgba(255, 30, 30, 255),</span><br><span class="line">    stop:0.66 rgba(255, 0, 0, 255),</span><br><span class="line">    stop:0.67 rgba(255, 255, 0, 255),</span><br><span class="line">    stop:1 rgba(255, 255, 0, 255));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#greenLabel &#123;</span><br><span class="line">    border-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#blueLabel &#123;</span><br><span class="line">    border-color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#yellowLabel &#123;</span><br><span class="line">    border-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>初始 QSS 如上，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png" alt></p>
-<blockquote>
-<p>点击 Dump 按钮，输出:<br>  Label size: QSize(200, 200)<br>  Contents rect: QRect(30,30 140x140)<br>  Contents margins: QMargins(30, 30, 30, 30)</p>
-</blockquote>
-<h3 id="由于-margin-为-0px，padding-为-0px，border-width-为-30px-所以"><a href="#由于-margin-为-0px，padding-为-0px，border-width-为-30px-所以" class="headerlink" title="由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:"></a>由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:</h3><ul>
-<li><strong>label width</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
-<li><strong>label height</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
-<li><strong>content rect 的 x</strong>: 0 + 30 + 0，为 30</li>
-<li><strong>content rect 的 y</strong>: 0 + 30 + 0，为 30</li>
-<li><strong>content margin</strong>：0 + 30，为 30</li>
-</ul>
-<hr>
-<p>修改 <code>margin: 20px; padding: 0px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png" alt></p>
-<blockquote>
-<p>点击 Dump 按钮，输出:<br>  Label size: QSize(240, 240)<br>  Contents rect: QRect(50,50 140x140)<br>  Contents margins: QMargins(50, 50, 50, 50)</p>
-</blockquote>
-<h3 id="由于-margin-为-20px，padding-为-0px，所以"><a href="#由于-margin-为-20px，padding-为-0px，所以" class="headerlink" title="由于 margin 为 20px，padding 为 0px，所以"></a>由于 margin 为 20px，padding 为 0px，所以</h3><ul>
-<li><strong>label width</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
-<li><strong>label height</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
-<li><strong>content rect 的 x</strong>: 20 + 30 + 0，为 50</li>
-<li><strong>content rect 的 y</strong>: 20 + 30 + 0，为 50</li>
-<li><strong>content margin</strong>：20 + 30 + 0，为 50</li>
-</ul>
-<p>左上角 QLabel 的大小为红框括起来的范围，而不是可见的 border 括起来的范围，因为 margin 为 20px。</p>
-<hr>
-<p>修改 <code>margin: 0px; padding: -20px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png" alt></p>
-<blockquote>
-<p>点击 Dump 按钮，输出:<br>  Label size: QSize(160, 160)<br>  Contents rect: QRect(10,10 140x140)<br>  Contents margins: QMargins(10, 10, 10, 10)</p>
-</blockquote>
-<h3 id="由于-margin-为-0px，padding-为-20px，所以"><a href="#由于-margin-为-0px，padding-为-20px，所以" class="headerlink" title="由于 margin 为 0px，padding 为 -20px，所以:"></a>由于 margin 为 0px，padding 为 -20px，所以:</h3><ul>
-<li><strong>label width</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
-<li><strong>label height</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
-<li><strong>content rect 的 x</strong>: 0 + 30 + -20，为 10</li>
-<li><strong>content rect 的 y</strong>: 0 + 30 + -20，为 10</li>
-<li><strong>content margin</strong>：0 + 30 + -20，为 10</li>
-</ul>
-<p>contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的文本 Flag 被绘制到了 border 上面。</p>
-<hr>
-<p>修改 <code>margin: -10px; padding: -20px;</code>，效果为：<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png" alt></p>
-<blockquote>
-<p>点击 Dump 按钮，输出:<br>  Label size: QSize(140, 140)<br>  Contents rect: QRect(0,0 140x140)<br>  Contents margins: QMargins(0, 0, 0, 0)</p>
-</blockquote>
-<h3 id="由于-margin-为-10px，padding-为-20px，所以"><a href="#由于-margin-为-10px，padding-为-20px，所以" class="headerlink" title="由于 margin 为 -10px，padding 为 -20px，所以"></a>由于 margin 为 -10px，padding 为 -20px，所以</h3><ul>
-<li><strong>label width</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
-<li><strong>label height</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
-<li><strong>content rect 的 x</strong>: -10 + 30 + -20，为 0</li>
-<li><strong>content rect 的 y</strong>: -10 + 30 + -20，为 0</li>
-<li><strong>content margin</strong>：-10 + 30 + -20，为 0</li>
-</ul>
-<p>因为 margin 为 -10px，border-width 为 30px，所以上边的 border 应该从 (-10, -10) 开始绘制，有三分之一给绘制到了 QLabel 的不可见区域，所以从图中看不到，这里我们使用了一个三色的 border，能直观的看到 border 的变化。</p>
-<p>QSS 里盒子模型是很关键的，相信大家现在已经明白了，但是，古人云：纸上得来终觉浅，绝知此事要躬行，请自己尝试修改不同的 margin, border, padding, min-width, min-height 等，计算、对比输出的结果，这样才会有更深刻的体会。</p>
-
+    <p>每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示</p>
+    
     
 
     
@@ -1127,91 +1103,6 @@
 
 
   
-    <article id="post-Hexo-uses-images-cannot-display" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class=" article-header">
-  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/25/Hexo-uses-images-cannot-display/">Hexo使用markdown插入图片无法显示解决方法</a>
-    </h1>
-  
-
-  
-  <a href="/2019/05/25/Hexo-uses-images-cannot-display/" class="archive-article-date">
-	
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_page_pv" style="display:none">
-		总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-	<span class="post-meta-divider" style="display:none">   </span>
-	
-	<time datetime="2019-05-25T12:17:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-25</time>
-</a>
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>hexo发布博客时，文章中引用的本地图片总是无法显示。<br>hexo默认无法处理文章插入本地图片，需要通过扩展插件支持。</p>
-<h1 id="插件安装与配置"><a href="#插件安装与配置" class="headerlink" title="插件安装与配置"></a>插件安装与配置</h1><p>1、我们需要安装一个图片路径转换的插件，插件名字为<strong>hexo-asset-image</strong>，只需执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /d 你的hexo根目录</span><br><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
-    
-    
-
-    
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/05/25/Hexo-uses-images-cannot-display/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1341,15 +1232,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,11 +1248,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Qss</a>
               </li>
              
               <li class="article-tag-list-item">
