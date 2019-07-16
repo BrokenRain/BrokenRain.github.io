@@ -1,9 +1,9 @@
 ---
-title: Qss使用技巧
+title: QSS使用技巧
 date: 2019-07-04 14:41:40
 tags:
-	- Qt
-	- Qss
+	- QT
+	- QSS
 ---
 
 # 动态属性

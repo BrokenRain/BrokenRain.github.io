@@ -2,7 +2,7 @@
 title: Qt 杂录
 date: 2019-06-04 11:51:54
 tags:
- - Qt
+	- QT
 ---
 
 # UUID

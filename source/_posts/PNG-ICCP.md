@@ -2,7 +2,7 @@
 title: Qt使用PNG时提示iCCP警告的解决方法
 date: 2019-06-05 15:30:19
 tags:
- - Qt
+ - QT
  - PNG
  - ICCP
 ---
