@@ -103,3 +103,12 @@ void Tool::clearListWidget(QListWidget *listWidget)
 	}
 }
 ```
+
+# QMenu设置圆角
+```
+QMenu *menu = new QMenu(this);
+menu->setWindowFlag(Qt::FramelessWindowHint);		//重要
+menu->setAttribute(Qt::WA_TranslucentBackground);	//重要
+
+menu->setStyleSheet(QString("QMenu { border-radius: 4px; }"));
+```
