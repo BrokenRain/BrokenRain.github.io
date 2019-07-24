@@ -13,7 +13,7 @@ keywords: "C/C++,QT,C#"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://brokenrain.github.io
+url: https://BrokenRain.coding.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -93,11 +93,13 @@ pagination_dir: page
 # theme: landscape
 theme: hexo-theme-yilia
 
-# Deployment
+# Deployment git@github.com:BrokenRain/BrokenRain.github.io.git
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:BrokenRain/BrokenRain.github.io.git
+  repo: 
+    github: https://github.com/BrokenRain/BrokenRain.github.io.git
+    coding: https://git.dev.tencent.com/BrokenRain/BrokenRain.coding.me.git
   branch: master
 
 jsonContent:
