@@ -5,29 +5,29 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://brokenrain.github.io">
+  <link rel="dns-prefetch" href="https://BrokenRain.coding.me">
   <title>盒子模型 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示">
 <meta name="keywords" content="QT,QSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="盒子模型">
-<meta property="og:url" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/index.html">
+<meta property="og:url" content="https://BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
 <meta property="og:description" content="每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-1.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-2.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-1.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-2.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png">
 <meta property="og:updated_time" content="2019-07-16T08:43:10.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="盒子模型">
 <meta name="twitter:description" content="每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示">
-<meta name="twitter:image" content="http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png">
+<meta name="twitter:image" content="https://brokenrain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -193,7 +193,7 @@
     
     <p>每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示</p>
 <a id="more"></a>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png" alt></p>
+<p><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-0.png" alt></p>
 <ul>
 <li><code>content</code>: 绘制内容的矩形区域（如绘制文本、图片），Qt 自带的 widget 都是在 content 区里绘制内容，这只是一个约定，只要你愿意，也可以在绘制到 padding, border, margin 区</li>
 <li><code>padding</code>: 内容区和边框之间的间隔</li>
@@ -201,7 +201,7 @@
 <li><code>margin</code>: 想像 widget 的矩形区域有一个隐形的边框，margin 就是 border 和这个隐形边框之间的间隔</li>
 </ul>
 <p>QWidget 的 content, padding, border, margin 的矩形区域都是一样大的，也就是说，margin, border, padding 的值为 0，content 的矩形和 QWidget 的矩形一样大，但是 QPushButton 默认的 margin, border, padding 的值不为 0（可以试试 <code>setFlat(true)</code> 后再看看这几个值是什么）。</p>
-<p>Margin，Border，Padding 都分为 4 个部分：上、右、下、左，它们的值可以不同：<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-1.png" alt></p>
+<p>Margin，Border，Padding 都分为 4 个部分：上、右、下、左，它们的值可以不同：<br><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-1.png" alt></p>
 <h2 id="padding-的语法"><a href="#padding-的语法" class="headerlink" title="padding 的语法"></a>padding 的语法</h2><ul>
 <li><code>padding: 2px 3px 4px 5px</code> 表示:<ul>
 <li>padding-top 为 2px</li>
@@ -226,7 +226,7 @@
 </ul>
 <p>margin 的语法和 padding 的一样，border 除了分成 4 个部分外，还有颜色，圆角等。<br>也许你也有和我一样的疑问，为什么上面表示的顺序不是从左开始，而是从上开始？对我来说，从左开始更习惯一些，但是 CSS 和 QSS 里就是这么规定的，没办法，既然不能反抗，那么就享受吧！</p>
 <h2 id="padding-是什么"><a href="#padding-是什么" class="headerlink" title="padding 是什么"></a>padding 是什么</h2><p>可能你还是不明白 margin, padding 具体是什么，下面用例子具体的的介绍它们。在 Qt Designer 里用 QGridLayout 布局，拖放一个 QLabel 到窗口上，让其占据整个窗口，用下面的 QSS 把 QLabel 的 margin, border, padding 都设置为 50px：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 50px;</span><br><span class="line">    border: 50px solid rgb(74, 74, 74);</span><br><span class="line">    padding: 50px;</span><br><span class="line">    background: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-2.png" alt></p>
+<p><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-2.png" alt></p>
 <h3 id="在-Qt-Designer-里选中-QLabel"><a href="#在-Qt-Designer-里选中-QLabel" class="headerlink" title="在 Qt Designer 里选中 QLabel:"></a>在 Qt Designer 里选中 QLabel:</h3><ul>
 <li>8 个蓝色小方块内就是 QLabel，外面是 parent widget 的，不属于 QLabel</li>
 <li>标记为 margin 的部分是 margin，为 50px</li>
@@ -271,7 +271,7 @@
 <h2 id="可视化盒子模型"><a href="#可视化盒子模型" class="headerlink" title="可视化盒子模型"></a>可视化盒子模型</h2><p>下面的程序，可以直观地验证盒子模型的理论，有助于加深理解，界面虽然俗气了点，但效果却是不凡，正所谓：大俗即大雅。顶级窗口的 content margin 和 spacing 设置为 0，有 4 个 QLabel，它们只有 border 的颜色不一样，还有一个 QPushButton，按下 QPushButton 时输出左上角 flagLabel 的 size(), contentsRect() 和 contentsMargins()</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MainWidget::MainWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent), ui(new Ui::MainWidget) &#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line"></span><br><span class="line">    // 为了简化代码，使用了 C++11 才支持的 Lambda 语法的信号槽连接</span><br><span class="line">    connect(ui-&gt;dumpButton, &amp;QPushButton::clicked, [this]() &#123;</span><br><span class="line">        qDebug() &lt;&lt; &quot;Label size: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;size();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents rect: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsRect();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents margins: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsMargins();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 0px;</span><br><span class="line">    padding: 0px;</span><br><span class="line">    border-width: 30px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    background: white;</span><br><span class="line">    min-width: 140px;  /* 设置 content rect 的最小 width，不是 widget 的 width() */</span><br><span class="line">    min-height: 140px; /* 设置 content rect 的最小 heightd，不是 widget 的 height()*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#flagLabel &#123;</span><br><span class="line">    border-color: qlineargradient(</span><br><span class="line">    spread:pad, x1:0,</span><br><span class="line">    y1:0, x2:0, y2:1,</span><br><span class="line">    stop:0 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.33 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.34 rgba(255, 30, 30, 255),</span><br><span class="line">    stop:0.66 rgba(255, 0, 0, 255),</span><br><span class="line">    stop:0.67 rgba(255, 255, 0, 255),</span><br><span class="line">    stop:1 rgba(255, 255, 0, 255));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#greenLabel &#123;</span><br><span class="line">    border-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#blueLabel &#123;</span><br><span class="line">    border-color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#yellowLabel &#123;</span><br><span class="line">    border-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>初始 QSS 如上，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png" alt></p>
+<p>初始 QSS 如上，效果为:<br><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-3.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(200, 200)<br>  Contents rect: QRect(30,30 140x140)<br>  Contents margins: QMargins(30, 30, 30, 30)</p>
 </blockquote>
@@ -286,7 +286,7 @@
 </ul>
 </blockquote>
 <hr>
-<p>修改 <code>margin: 20px; padding: 0px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png" alt></p>
+<p>修改 <code>margin: 20px; padding: 0px;</code>，效果为:<br><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-4.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(240, 240)<br>  Contents rect: QRect(50,50 140x140)<br>  Contents margins: QMargins(50, 50, 50, 50)</p>
 </blockquote>
@@ -302,7 +302,7 @@
 </blockquote>
 <p>左上角 QLabel 的大小为红框括起来的范围，而不是可见的 border 括起来的范围，因为 margin 为 20px。</p>
 <hr>
-<p>修改 <code>margin: 0px; padding: -20px;</code>，效果为:<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png" alt></p>
+<p>修改 <code>margin: 0px; padding: -20px;</code>，效果为:<br><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-5.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(160, 160)<br>  Contents rect: QRect(10,10 140x140)<br>  Contents margins: QMargins(10, 10, 10, 10)</p>
 </blockquote>
@@ -318,7 +318,7 @@
 </blockquote>
 <p>contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的文本 Flag 被绘制到了 border 上面。</p>
 <hr>
-<p>修改 <code>margin: -10px; padding: -20px;</code>，效果为：<br><img src="//brokenrain.github.io/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png" alt></p>
+<p>修改 <code>margin: -10px; padding: -20px;</code>，效果为：<br><img src="//BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/QSS-BoxModel-6.png" alt></p>
 <blockquote>
 <p>点击 Dump 按钮，输出:<br>  Label size: QSize(140, 140)<br>  Contents rect: QRect(0,0 140x140)<br>  Contents margins: QMargins(0, 0, 0, 0)</p>
 </blockquote>
@@ -408,7 +408,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/07/11/qt-qss-boxmodel/" alt="微信分享二维码">
+      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=https://BrokenRain.coding.me/2019/07/11/qt-qss-boxmodel/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -620,10 +620,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
@@ -633,6 +629,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">

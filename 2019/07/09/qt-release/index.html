@@ -5,25 +5,25 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://brokenrain.github.io">
+  <link rel="dns-prefetch" href="https://BrokenRain.coding.me">
   <title>QT程序打包发布 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="当你历尽艰辛终于把”bug”写完，兴致勃勃的发给基友炫耀时，结果你的”bug”在基友电脑上跑不起来，提示缺少一堆dll，然后被基友一顿嘲讽，是不是很绝望？哈哈，不怕，看完这篇文章，基友就再也找不到嘲讽你的理由了，保不齐像牛皮糖样的崇拜你。">
 <meta name="keywords" content="QT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT程序打包发布">
-<meta property="og:url" content="http://brokenrain.github.io/2019/07/09/qt-release/index.html">
+<meta property="og:url" content="https://BrokenRain.coding.me/2019/07/09/qt-release/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
 <meta property="og:description" content="当你历尽艰辛终于把”bug”写完，兴致勃勃的发给基友炫耀时，结果你的”bug”在基友电脑上跑不起来，提示缺少一堆dll，然后被基友一顿嘲讽，是不是很绝望？哈哈，不怕，看完这篇文章，基友就再也找不到嘲讽你的理由了，保不齐像牛皮糖样的崇拜你。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/09/qt-release/命令行工具.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/09/qt-release/windeployqt.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/09/qt-release/output.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/09/qt-release/命令行工具.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/09/qt-release/windeployqt.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/09/qt-release/output.png">
 <meta property="og:updated_time" content="2019-07-09T07:23:39.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT程序打包发布">
 <meta name="twitter:description" content="当你历尽艰辛终于把”bug”写完，兴致勃勃的发给基友炫耀时，结果你的”bug”在基友电脑上跑不起来，提示缺少一堆dll，然后被基友一顿嘲讽，是不是很绝望？哈哈，不怕，看完这篇文章，基友就再也找不到嘲讽你的理由了，保不齐像牛皮糖样的崇拜你。">
-<meta name="twitter:image" content="http://brokenrain.github.io/2019/07/09/qt-release/命令行工具.png">
+<meta name="twitter:image" content="https://brokenrain.coding.me/2019/07/09/qt-release/命令行工具.png">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -189,19 +189,19 @@
     
     <p>当你历尽艰辛终于把”bug”写完，兴致勃勃的发给基友炫耀时，结果你的”bug”在基友电脑上跑不起来，提示缺少一堆dll，然后被基友一顿嘲讽，是不是很绝望？哈哈，不怕，看完这篇文章，基友就再也找不到嘲讽你的理由了，保不齐像牛皮糖样的崇拜你。</p>
 <a id="more"></a>
-<h1 id="查找DLL"><a href="#查找DLL" class="headerlink" title="查找DLL"></a>查找DLL</h1><p>1、在开始菜单Qt 5.9.0(根据自己的版本)中根据自己使用的编译器打开相应的命令行工具,如<code>MinGW</code>打开<code>Qt x.x for Desktop(MinGw ...)</code>、<code>MSVC</code>则打开<code>Qt x.x 32-bit for Desktop(MSVC 2015)</code>(位数和MSVC版本需要根据自己实际情况选择)<br><img src="//brokenrain.github.io/2019/07/09/qt-release/命令行工具.png" alt></p>
+<h1 id="查找DLL"><a href="#查找DLL" class="headerlink" title="查找DLL"></a>查找DLL</h1><p>1、在开始菜单Qt 5.9.0(根据自己的版本)中根据自己使用的编译器打开相应的命令行工具,如<code>MinGW</code>打开<code>Qt x.x for Desktop(MinGw ...)</code>、<code>MSVC</code>则打开<code>Qt x.x 32-bit for Desktop(MSVC 2015)</code>(位数和MSVC版本需要根据自己实际情况选择)<br><img src="//BrokenRain.coding.me/2019/07/09/qt-release/命令行工具.png" alt></p>
 <p>以<code>Qt 5.9 32-bit for Desktop(MSVC 2015)</code>为例。</p>
 <ul>
 <li>将需要打包的exe文件放入一个单独的文件夹中(我的文件夹为F:\test)</li>
 <li>使用命令”cd /d F:\test”跳转到exe文件路径</li>
-<li>使用命令”windeployqt test.exe”会将大部分需要的DLL拷贝到exe目录中(我的exe名称为test)<br>如下图则表示命令执行成功<br><img src="//brokenrain.github.io/2019/07/09/qt-release/windeployqt.png" alt></li>
+<li>使用命令”windeployqt test.exe”会将大部分需要的DLL拷贝到exe目录中(我的exe名称为test)<br>如下图则表示命令执行成功<br><img src="//BrokenRain.coding.me/2019/07/09/qt-release/windeployqt.png" alt></li>
 </ul>
 <p>完成这步可以保证你的程序在大部分电脑上运行，但是并不是全部，想要确保在全部电脑上能够运行，还要使用Visual Studio自带的dumpbin工具查找程序需要的DLL文件。</p>
 <p>2、在开始菜单Visual Studio 2015中根据软件位数打开相应的命令行工具。</p>
 <ul>
 <li>使用命令”cd /d F:\test”跳转到exe文件路径</li>
 <li>使用命令”dumpbin /IMPORTS test.exe &gt; output.txt”将所需的DLL文件写入output.txt文本中</li>
-<li>根据output.txt文本中内容查找并拷贝所需的DLL到软件所在文件夹中<br><img src="//brokenrain.github.io/2019/07/09/qt-release/output.png" alt></li>
+<li>根据output.txt文本中内容查找并拷贝所需的DLL到软件所在文件夹中<br><img src="//BrokenRain.coding.me/2019/07/09/qt-release/output.png" alt></li>
 </ul>
 <p>推荐一款查找软件<a href="https://www.listary.com/" target="_blank" rel="noopener">Listary</a></p>
 
@@ -273,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/07/09/qt-release/" alt="微信分享二维码">
+      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=https://BrokenRain.coding.me/2019/07/09/qt-release/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -485,10 +485,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
@@ -498,6 +494,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">

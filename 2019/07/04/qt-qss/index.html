@@ -5,25 +5,25 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://brokenrain.github.io">
+  <link rel="dns-prefetch" href="https://BrokenRain.coding.me">
   <title>QSS使用技巧 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="动态属性在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。">
 <meta name="keywords" content="QT,QSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QSS使用技巧">
-<meta property="og:url" content="http://brokenrain.github.io/2019/07/04/qt-qss/index.html">
+<meta property="og:url" content="https://BrokenRain.coding.me/2019/07/04/qt-qss/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
 <meta property="og:description" content="动态属性在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/04/qt-qss/正常状态.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/04/qt-qss/最大化.png">
-<meta property="og:image" content="http://brokenrain.github.io/2019/07/04/qt-qss/QSS使用属性.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/04/qt-qss/正常状态.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/04/qt-qss/最大化.png">
+<meta property="og:image" content="https://brokenrain.coding.me/2019/07/04/qt-qss/QSS使用属性.png">
 <meta property="og:updated_time" content="2019-07-16T08:47:59.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QSS使用技巧">
 <meta name="twitter:description" content="动态属性在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。 示例接下来以窗口最大化/还原按钮为例进行示例说明。">
-<meta name="twitter:image" content="http://brokenrain.github.io/2019/07/04/qt-qss/正常状态.png">
+<meta name="twitter:image" content="https://brokenrain.coding.me/2019/07/04/qt-qss/正常状态.png">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -189,7 +189,7 @@
     
     <h1 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h1><p>在开发过程中经常碰到控件在不同情况下需要不同的状态显示，在没了解Qt动态属性的用法时，我都是在代码中用setStyleSheet根据不同情况设置不同的样式，这种做法比较麻烦，而且不够灵活。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>接下来以窗口最大化/还原按钮为例进行示例说明。</p>
-<p><img src="//brokenrain.github.io/2019/07/04/qt-qss/正常状态.png" alt="正常状态"> <img src="//brokenrain.github.io/2019/07/04/qt-qss/最大化.png" alt="最大化"></p>
+<p><img src="//BrokenRain.coding.me/2019/07/04/qt-qss/正常状态.png" alt="正常状态"> <img src="//BrokenRain.coding.me/2019/07/04/qt-qss/最大化.png" alt="最大化"></p>
 <a id="more"></a>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void Widget::setMaxButtonProperty()</span><br><span class="line">&#123;</span><br><span class="line">	m_buttonMax-&gt;setProperty(&quot;maximizeProperty&quot;, this-&gt;isMaximized() ? true : false);</span><br><span class="line"></span><br><span class="line">	m_buttonMax-&gt;style()-&gt;unpolish(m_buttonMax);	//先卸载之前的样式</span><br><span class="line">	m_buttonMax-&gt;style()-&gt;polish(m_buttonMax);	//重新加载样式</span><br><span class="line">或者</span><br><span class="line">//	m_buttonMax-&gt;setStyle(QApplication::style())	</span><br><span class="line"></span><br><span class="line">	m_buttonMax-&gt;update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果之前已经设置了样式，需要重新设置时需要调用unpolish卸载之前的样式，当前你也可以直接使用<code>setStyle(QApplication::style())</code>一步到位</p>
@@ -197,7 +197,7 @@
 <h1 id="原始属性"><a href="#原始属性" class="headerlink" title="原始属性"></a>原始属性</h1><p>任何被Q_PROPERTY声明的属性都能在QSS中使用<code>qproperty-&lt;property name&gt;</code>语法进行设置。</p>
 <p>以QToolButton为例，QToolButton继承至QAbstractButton，QAbstractButton拥有以下被Q_PROPERTY声明的属性,子类也可通过QSS使用父类中被Q_PROPERTY声明的属性,如下，text、icon、iconSize等属性均可在QSS中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Q_WIDGETS_EXPORT QAbstractButton : public QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line">    Q_PROPERTY(QString text READ text WRITE setText)</span><br><span class="line">    Q_PROPERTY(QIcon icon READ icon WRITE setIcon)</span><br><span class="line">    Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)</span><br><span class="line">#ifndef QT_NO_SHORTCUT</span><br><span class="line">    Q_PROPERTY(QKeySequence shortcut READ shortcut WRITE setShortcut)</span><br><span class="line">#endif</span><br><span class="line">    Q_PROPERTY(bool checkable READ isCheckable WRITE setCheckable)</span><br><span class="line">    Q_PROPERTY(bool checked READ isChecked WRITE setChecked DESIGNABLE isCheckable NOTIFY toggled USER true)</span><br><span class="line">    Q_PROPERTY(bool autoRepeat READ autoRepeat WRITE setAutoRepeat)</span><br><span class="line">    Q_PROPERTY(bool autoExclusive READ autoExclusive WRITE setAutoExclusive)</span><br><span class="line">    Q_PROPERTY(int autoRepeatDelay READ autoRepeatDelay WRITE setAutoRepeatDelay)</span><br><span class="line">    Q_PROPERTY(int autoRepeatInterval READ autoRepeatInterval WRITE setAutoRepeatInterval)</span><br><span class="line">    Q_PROPERTY(bool down READ isDown WRITE setDown DESIGNABLE false)</span><br><span class="line">	....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QToolButton</span><br><span class="line">&#123; </span><br><span class="line">	qproperty-text: &quot;QSS使用属性1&quot;;</span><br><span class="line">	qproperty-icon: url(://img/:cat.png);</span><br><span class="line">	qproperty-iconSize: 121px 121px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="//brokenrain.github.io/2019/07/04/qt-qss/QSS使用属性.png" alt="效果图"></p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="//BrokenRain.coding.me/2019/07/04/qt-qss/QSS使用属性.png" alt="效果图"></p>
 <p>参考博文：<a href="https://blog.csdn.net/liang19890820/article/details/51693956" target="_blank" rel="noopener">https://blog.csdn.net/liang19890820/article/details/51693956</a></p>
 
     
@@ -272,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=http://brokenrain.github.io/2019/07/04/qt-qss/" alt="微信分享二维码">
+      <img src="https://bshare.optimix.asia/barCode?site=weixin&url=https://BrokenRain.coding.me/2019/07/04/qt-qss/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -484,10 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
@@ -497,6 +493,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ICCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">
