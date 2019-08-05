@@ -185,8 +185,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>当我们需要将一个界面绘制成图片时，就需要使用到render方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QPixmap pixmap(pwidget-&gt;size());</span><br><span class="line">pwidget-&gt;render(&amp;pixmap);</span><br></pre></td></tr></table></figure></p>
-<p>如果pwidget背景为透明时，pixmap的背景并不是透明的，会自动填充一个背景框，这样就达不到我们想要的效果，而且好丑。<br>其实解决方法很简单，只需要将pixmap用透明色填充一下就能得到透明背景了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QPixmap pixmap(pwidget-&gt;size());</span><br><span class="line">pixmap.fill(QColor(0, 0, 0, 0));</span><br><span class="line">pwidget-&gt;render(&amp;pixmap);</span><br></pre></td></tr></table></figure></p>
-
+    
     
 
     
@@ -1111,15 +1110,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
               </li>
              
               <li class="article-tag-list-item">
