@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://BrokenRain.coding.me">
   <title>Qt pro使用记录 | 那年心碎的雨的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="区分平台和编译器位数1234567891011121314151617win32 &amp;#123;    contains(QT_ARCH, i386) &amp;#123;    message(&amp;quot;32-bit&amp;quot;)    LIBS += ...... (32位库)    &amp;#125;else &amp;#123;    message(&amp;quot;64-bit&amp;quot;)    LIBS +=">
+  <meta name="description" content="平台、编译器位数区分">
 <meta name="keywords" content="QT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt pro使用记录">
 <meta property="og:url" content="https://BrokenRain.coding.me/2019/09/09/Qt-pro/index.html">
 <meta property="og:site_name" content="那年心碎的雨的博客">
-<meta property="og:description" content="区分平台和编译器位数1234567891011121314151617win32 &amp;#123;    contains(QT_ARCH, i386) &amp;#123;    message(&amp;quot;32-bit&amp;quot;)    LIBS += ...... (32位库)    &amp;#125;else &amp;#123;    message(&amp;quot;64-bit&amp;quot;)    LIBS +=">
+<meta property="og:description" content="平台、编译器位数区分">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T09:49:35.837Z">
+<meta property="og:updated_time" content="2019-09-09T09:52:48.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt pro使用记录">
-<meta name="twitter:description" content="区分平台和编译器位数1234567891011121314151617win32 &amp;#123;    contains(QT_ARCH, i386) &amp;#123;    message(&amp;quot;32-bit&amp;quot;)    LIBS += ...... (32位库)    &amp;#125;else &amp;#123;    message(&amp;quot;64-bit&amp;quot;)    LIBS +=">
+<meta name="twitter:description" content="平台、编译器位数区分">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -183,7 +183,8 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="区分平台和编译器位数"><a href="#区分平台和编译器位数" class="headerlink" title="区分平台和编译器位数"></a>区分平台和编译器位数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">win32 &#123;</span><br><span class="line">    contains(QT_ARCH, i386) &#123;</span><br><span class="line">    message(&quot;32-bit&quot;)</span><br><span class="line">    LIBS += ...... (32位库)</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    message(&quot;64-bit&quot;)</span><br><span class="line">    LIBS += ...... (64位库)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">macx &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unix &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h2 id="平台、编译器位数区分"><a href="#平台、编译器位数区分" class="headerlink" title="平台、编译器位数区分"></a>平台、编译器位数区分</h2><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">win32 &#123;</span><br><span class="line">    contains(QT_ARCH, i386) &#123;</span><br><span class="line">    message(&quot;32-bit&quot;)</span><br><span class="line">    LIBS += ...... (32位库)</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    message(&quot;64-bit&quot;)</span><br><span class="line">    LIBS += ...... (64位库)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">macx &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unix &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
 
     
@@ -295,7 +296,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#区分平台和编译器位数"><span class="toc-number">1.</span> <span class="toc-text">区分平台和编译器位数</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#平台、编译器位数区分"><span class="toc-number">1.</span> <span class="toc-text">平台、编译器位数区分</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -439,6 +440,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -447,7 +452,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,15 +468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Win32</a>
+                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">QSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Visual Studio 2015</a>
               </li>
              
               <li class="article-tag-list-item">
